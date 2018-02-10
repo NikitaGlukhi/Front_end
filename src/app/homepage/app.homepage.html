@@ -1,0 +1,19 @@
+<h2 xmlns="">Well come!</h2>
+<h1>Список городов и отделений</h1>
+<div>
+<p>
+<select id="soflow" [(ngModel)]="City">
+    <option [ngValue]="undefined" disabled selected>Выбор города</option>
+    <option *ngFor="let city of cities">{{city.city_name}}</option>
+</select>
+</p>
+
+<p>
+<select id="soflow1" [(ngModel)]="Office">
+  <option [ngValue]="undefined" disabled selected>Выбор отделения</option>
+  <option *ngFor="let office of defaultOffices">{{ office.address }}</option>
+</select>
+</p>
+</div>
+<h3>Город: {{ City }}</h3>
+<h3>Адрес отделения: {{ Office }}</h3>

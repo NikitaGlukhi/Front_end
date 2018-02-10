@@ -1,0 +1,78 @@
+<h2>Оформление заказа</h2>
+<form (ngSubmit)="onSubmit()" #orderForm="ngForm" method="POST" action="order-approve">
+<p>
+  <span class="input">
+    <input type="text" placeholder="Название товара">
+    <span></span>
+  </span>
+</p>
+<p>
+  <span class="input">
+    <input type="text" placeholder="Тип товара">
+    <span></span>
+  </span>
+</p>
+<p>
+  <span class="input">
+    <input type="number" placeholder="Количество" min="1">
+    <span></span>
+  </span>
+</p>
+
+<p>
+  <span class="input">
+    <input type="number" placeholder="Вес товара(в килограммах)" min="0.1">
+    <span></span>
+  </span>
+</p>
+
+  <p>
+    <select id="spisok" name="storage_conditions">
+    <option value="" hidden disabled selected>Условия храниения</option>
+    <option value="c1">Хранить при низкой температуре</option>
+    <option value="c2">Хранить при высокой температуре</option>
+    <option value="c3">Хранить при умеренной температуре</option>
+    <option value="c4">Хранить во влажных условиях</option>
+    <option value="c5">Хранить в сухих условиях</option>
+    <option value="c5">Хранить в вакууме</option>
+  </select>
+  </p>
+
+  <p>
+    <select id="spisok1" name="address" *ngIf="condition">
+    <option value="" hidden disabled selected>Адрес отправления</option>
+    <option value="s1">Адрес1</option>
+    <option value="s2">Адрес2</option>
+    <option value="s3">Адрес3</option>
+    <option value="s4">Адрес4</option>
+  </select>
+  </p>
+
+  <p>
+      <input id="dom-address" type="text" placeholder="Введите Ваш домашний адрес" *ngIf="!condition">
+      <span></span>
+  </p>
+
+  <p><select id="spisok2" name="address1">
+    <option value="" hidden disabled selected>Адрес доставки</option>
+    <option value="s5">Адрес1</option>
+    <option value="s6">Адрес2</option>
+    <option value="s7">Адрес3</option>
+    <option value="s8">Адрес4</option>
+  </select>
+  </p>
+
+  <label class="checkbox">
+    <input type="checkbox" (click)="toggle()" />
+    <div class="checkbox__text"></div>
+  </label><h4 class="linear-wipe">Я хочу отправить товар из дому</h4>
+
+  <a>
+    <span class="text">Оформить заказ</span>
+    <span class="line -right"></span>
+    <span class="line -top"></span>
+    <span class="line -left"></span>
+    <span class="line -bottom"></span>
+  </a>
+
+</form>

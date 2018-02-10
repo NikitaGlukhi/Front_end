@@ -1,0 +1,13 @@
+<form>
+<ul class="buttonChest">
+  <li>
+    <div class="button red" (click)="toggle()">Отказать</div>
+    <span class="click">Указать причину отказа</span>
+    <input type="text" *ngIf="!condition" /><button *ngIf="!condition">Отправить</button>
+  </li>
+  <li>
+    <div class="button green">Подтвердить</div>
+    <span class="click">Сохранить заказ в базу данных</span>
+  </li>
+</ul>
+</form>

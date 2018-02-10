@@ -1,0 +1,17 @@
+<h1>Список водителей</h1>
+<table id="customers">
+  <tr>
+    <th>Имя водителя</th>
+    <th>Фамилия водителя</th>
+    <th>Категория водителя</th>
+    <th>Опыт работы(кол-во лет)</th>
+    <th>Заказов доставлено</th>
+  </tr>
+  <tr *ngFor="let driver of drivers" style="text-align: center">
+    <td>{{driver.firstName}}</td>
+    <td>{{driver.lastName}}</td>
+    <td>{{driver.driver_licence}}</td>
+    <td>{{driver.experience}}</td>
+    <td>{{driver.deliveries_count}}</td>
+  </tr>
+</table>
