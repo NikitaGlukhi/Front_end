@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
@@ -33,12 +33,13 @@ export class AppService {
     return this.http.get('api/cities')
       .pipe(
         catchError(this.handleError)
-      )
+      );
   }
 
-  getOfficeData() {
-    console.log('Got data of offices');
-    return this.http.get('api/offices')
+  getOfficeData(city) {
+    const options = city ?
+      { params: new HttpParams().set('value', city) } : {};
+    return this.http.get('api/offices', options )
       .pipe(
         catchError(this.handleError)
       )

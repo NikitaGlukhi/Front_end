@@ -8,26 +8,20 @@ import { AppService } from '../app.service';
 })
 
 export class AppHomepageComponent {
-  // city: any;
-  cities: any[] = [];
-  defaultOffices: any[] = [];
-  // offices: any[] = [];
-  // Office: any;
+  City: any;
+  Office: any;
+  cities: any = [];
+  offices: any = [];
 
-/*  myFunction() {
-    this.offices = this.offices.filter(office => {
-      return office.city_id === this.city.city_id;
-    });
-    console.log(this.Office);
-  }*/
+    constructor(private AppCityService: AppService, private AppOfficeService: AppService) {
+      this.AppCityService.getCityData().subscribe(data => {
+        this.cities = data;
+      });
+    };
 
-  constructor(private AppCityService: AppService, private AppOfficeService: AppService) {
-    this.AppCityService.getCityData().subscribe(data => {
-      this.cities = data;
+  myFunction() {
+    this.AppOfficeService.getOfficeData(this.City.city_id).subscribe(data => {
+      this.offices = data;
     });
-    this.AppOfficeService.getOfficeData().subscribe(data => {
-      this.defaultOffices = data;
-      // this.offices = data;
-    });
-  };
+  }
 }
