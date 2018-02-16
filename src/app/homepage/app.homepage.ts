@@ -4,7 +4,7 @@ import { AppService } from '../app.service';
 @Component({
   selector: 'homepage',
   templateUrl: './app.homepage.html',
-  styleUrls: ['./app.homepage.css', './app.homepage2.css']
+  styleUrls: ['./app.homepage.css', './app.homepage2.css', './app.text.css']
 })
 
 export class AppHomepageComponent {

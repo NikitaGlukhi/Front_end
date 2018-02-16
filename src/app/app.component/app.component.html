@@ -1,4 +1,26 @@
 <!--The whole content below can be removed with the new code.-->
+<a class="social-container login" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+  <div class="social-cube">
+    <div class="front">
+      Log In
+    </div>
+    <div class="bottom">
+      or Sing Up
+    </div>
+  </div>
+</a>
+
+<a class="social-container logout" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+  <div class="social-cube">
+    <div class="front">
+      Log Out
+    </div>
+    <div class="bottom">
+      or stay here
+    </div>
+  </div>
+</a>
+
 <nav class="navigation">
   <ul class="menu">
     <li class="menu__item">
@@ -14,7 +36,7 @@
       </a>
     </li>
 
-    <li class="menu__item">
+    <li class="menu__item" *ngIf="auth.isAuthenticated()">
       <a routerLink="create-order" class="menu__link">
                 <span class="menu__title">
                     <span class="menu__first-word" data-hover="Сформировать">
@@ -40,7 +62,7 @@
       </a>
     </li>
 
-    <li class="menu__item">
+    <li class="menu__item" *ngIf="auth.isAuthenticated()">
       <a routerLink="order-approve" class="menu__link">
                 <span class="menu__title">
                     <span class="menu__first-word" data-hover="Обработка">

@@ -12,6 +12,9 @@ import { AppCreate_orderModule } from './create_order/app.create_order';
 import { AppOrder_approveModule } from './order_approve/app.order_approve';
 import { AppService } from './app.service';
 import { NotFoundComponent } from './not_found_component/not_found';
+import { CallbackComponent } from './callback/app.callback';
+import { AuthService } from './auth/app.auth.service';
+import { AuthGuard } from './auth/app.auth.guard';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { NotFoundComponent } from './not_found_component/not_found';
     AppDriversComponent,
     AppCreate_orderModule,
     AppOrder_approveModule,
+    CallbackComponent,
     NotFoundComponent
   ],
   imports: [
@@ -28,7 +32,7 @@ import { NotFoundComponent } from './not_found_component/not_found';
     FormsModule,
     RouterModule.forRoot( route )
   ],
-  providers: [ AppService ],
-  bootstrap: [AppComponent]
+  providers: [ AppService, AuthService, AuthGuard ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
