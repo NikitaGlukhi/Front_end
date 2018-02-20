@@ -10,11 +10,15 @@ import { AppDriversComponent } from './drivers/app.drivers';
 import { AppHomepageComponent } from './homepage/app.homepage';
 import { AppCreate_orderModule } from './create_order/app.create_order';
 import { AppOrder_approveModule } from './order_approve/app.order_approve';
-import { AppService } from './app.service';
+import { AppService } from './services/app.service';
 import { NotFoundComponent } from './not_found_component/not_found';
-import { CallbackComponent } from './callback/app.callback';
-import { AuthService } from './auth/app.auth.service';
-import { AuthGuard } from './auth/app.auth.guard';
+import { AppRegisterComponent } from './register/app.register.component';
+import { AppAlertComponent } from './alert/app.alert.component';
+import { AppAlertService } from './services/app.alert.service';
+import { AppUserService } from './services/app.user.service';
+import { AppAuthService } from './services/app.auth.service';
+import { AppLoginComponent } from './login/app.login.component';
+import { AuthGuard } from './guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { AuthGuard } from './auth/app.auth.guard';
     AppDriversComponent,
     AppCreate_orderModule,
     AppOrder_approveModule,
-    CallbackComponent,
+    AppAlertComponent,
+    AppRegisterComponent,
+    AppLoginComponent,
     NotFoundComponent
   ],
   imports: [
@@ -32,7 +38,7 @@ import { AuthGuard } from './auth/app.auth.guard';
     FormsModule,
     RouterModule.forRoot( route )
   ],
-  providers: [ AppService, AuthService, AuthGuard ],
+  providers: [ AuthGuard, AppService, AppAlertService, AppUserService, AppAuthService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
