@@ -17,6 +17,7 @@ export class AppUserService {
   }
 
   createUser(user: AppUserModel) {
+    console.log(2222, user);
     return this.http.post('/api/users', user);
   }
 

@@ -19,6 +19,7 @@ import { AppUserService } from './services/app.user.service';
 import { AppAuthService } from './services/app.auth.service';
 import { AppLoginComponent } from './login/app.login.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AppAuthenticationComponent } from './authentication/app.authentication';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import { AuthGuard } from './guard/auth.guard';
     AppCreate_orderModule,
     AppOrder_approveModule,
     AppAlertComponent,
-    AppRegisterComponent,
-    AppLoginComponent,
+    // AppRegisterComponent,
+    // AppLoginComponent,
+    AppAuthenticationComponent,
     NotFoundComponent
   ],
   imports: [

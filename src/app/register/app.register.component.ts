@@ -8,23 +8,4 @@ import { AppAlertService } from '../services/app.alert.service';
   templateUrl: 'app.register.html'
 })
 
-export class AppRegisterComponent {
-  model: any = {};
-  loading = false;
-
-  constructor(private router: Router, private userService: AppUserService, private alertService: AppAlertService) {}
-
-  register() {
-    this.loading = true;
-    this.userService.createUser(this.model)
-      .subscribe(data => {
-        this.alertService.success('Registration successful', true);
-        this.router.navigate(['/login'])
-      },
-        error => {
-        this.alertService.error(error);
-        this.loading = false;
-        }
-      )
-  }
-}
+export class AppRegisterComponent {  }
