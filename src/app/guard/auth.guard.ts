@@ -10,7 +10,6 @@ export class AuthGuard implements CanActivate {
       return true
     }
     this.router.navigate(['/authentication']);
-    alert('Пройдите авторизацию!');
     return false;
   }
 }

@@ -12,12 +12,10 @@ import { AppCreate_orderModule } from './create_order/app.create_order';
 import { AppOrder_approveModule } from './order_approve/app.order_approve';
 import { AppService } from './services/app.service';
 import { NotFoundComponent } from './not_found_component/not_found';
-import { AppRegisterComponent } from './register/app.register.component';
 import { AppAlertComponent } from './alert/app.alert.component';
 import { AppAlertService } from './services/app.alert.service';
 import { AppUserService } from './services/app.user.service';
 import { AppAuthService } from './services/app.auth.service';
-import { AppLoginComponent } from './login/app.login.component';
 import { AuthGuard } from './guard/auth.guard';
 import { AppAuthenticationComponent } from './authentication/app.authentication';
 
@@ -29,8 +27,6 @@ import { AppAuthenticationComponent } from './authentication/app.authentication'
     AppCreate_orderModule,
     AppOrder_approveModule,
     AppAlertComponent,
-    // AppRegisterComponent,
-    // AppLoginComponent,
     AppAuthenticationComponent,
     NotFoundComponent
   ],

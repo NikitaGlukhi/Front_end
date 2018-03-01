@@ -7,10 +7,10 @@ import { AppAuthService } from '../services/app.auth.service';
 @Component({
   selector: 'authentication',
   templateUrl: './app.authentication.html',
-  styleUrls: ['./app.authentication.css']
+  styleUrls: ['./app.authentication.css', './app.email.css', './app.number.css', './app.password.css', './app.select.css']
 })
 
-export class AppAuthenticationComponent implements OnInit{
+export class AppAuthenticationComponent implements OnInit {
   model: any = {};
   loading = false;
   returnUrl: string;
@@ -44,7 +44,6 @@ export class AppAuthenticationComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.authService.logout();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
   }
 

@@ -10,9 +10,10 @@ export class AppAuthService {
   login(e_mail: string, password: string) {
     return this.http.post<any>('/api/authenticate', { e_mail: e_mail, password: password })
       .map(user => {
-        if (user && user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+        if (user) {
+          localStorage.setItem('currentUser', JSON.stringify(1));
         }
+        return(user);
       });
   }
   logout() {
