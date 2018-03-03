@@ -1,88 +1,18 @@
-<!--The whole content below can be removed with the new code.-->
-<button routerLink="authentication">Sing Up or Log In</button>
-<button routerLink="/" (click)="auth.logout()">Log Out</button>
-
-<nav class="navigation">
-  <ul class="menu">
-    <li class="menu__item">
-      <a routerLink="homepage" class="menu__link">
-        <span class="menu__title">
-          <span class="menu__first-word" data-hover="Домашняя">
-            Домашняя
-          </span>
-          <span class="menu__second-word" data-hover="страница">
-            страница
-          </span>
-        </span>
-      </a>
-    </li>
-
-    <li class="menu__item">
-      <a routerLink="create-order" class="menu__link">
-        <span class="menu__title">
-          <span class="menu__first-word" data-hover="Сформировать">
-            Сформировать
-          </span>
-          <span class="menu__second-word" data-hover="заказ">
-            Заказ
-          </span>
-        </span>
-      </a>
-    </li>
-
-    <li class="menu__item">
-      <a routerLink="#" class="menu__link">
-        <span class="menu__title">
-          <span class="menu__first-word" data-hover="Http">
-            Http
-          </span>
-          <span class="menu__second-word" data-hover="Client">
-            Client
-          </span>
-        </span>
-      </a>
-    </li>
-
-    <li class="menu__item">
-      <a routerLink="order-approve" class="menu__link">
-        <span class="menu__title">
-          <span class="menu__first-word" data-hover="Обработка">
-            Обработка
-          </span>
-          <span class="menu__second-word" data-hover="заказов">
-            заказов
-          </span>
-        </span>
-      </a>
-    </li>
-
-    <li class="menu__item">
-      <a routerLink="#" class="menu__link">
-        <span class="menu__title">
-          <span class="menu__first-word" data-hover="On">
-            On
-          </span>
-          <span class="menu__second-word" data-hover="Sale">
-            Sale
-          </span>
-        </span>
-      </a>
-    </li>
-
-    <li class="menu__item">
-      <a routerLink="drivers" class="menu__link">
-        <span class="menu__title">
-          <span class="menu__first-word" data-hover="Список">
-            Список
-          </span>
-          <span class="menu__second-word" data-hover="водителей">
-            водителей
-          </span>
-        </span>
-      </a>
+<div class="menu">
+<h3 class="intro" style="text-align: center">Post Office</h3>
+<div class="title">MENU</div>
+  <ul class="nav">
+    <li>
+      <p><a routerLink="homepage">Домашняя страница</a></p>
+      <p><a routerLink="create-order">Сформировать заказ</a></p>
+      <p><a routerLink="order-approve">Обработка заказов</a></p>
+      <p><a routerLink="drivers">Список водителей</a></p>
+      <p><a routerLink="#">Мой профиль</a></p>
+      <p><a routerLink="authentication" *ngIf="!auth.isAuthentcated()">Log In</a></p>
+      <p><a routerLink="/" *ngIf="auth.isAuthentcated()" (click)="auth.logout()">Log Out</a></p>
     </li>
   </ul>
-</nav>
+</div>
 
 <router-outlet></router-outlet>
 

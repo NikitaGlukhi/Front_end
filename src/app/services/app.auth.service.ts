@@ -16,6 +16,17 @@ export class AppAuthService {
         return(user);
       });
   }
+
+  isAuthentcated() {
+    const token = localStorage.getItem('currentUser');
+
+    if (token) {
+      return true;
+    }
+
+    return false;
+  }
+
   logout() {
     localStorage.removeItem('currentUser');
   }
