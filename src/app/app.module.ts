@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { route } from './app.routing';
 import { AppDriversComponent } from './drivers/app.drivers';
 import { AppHomepageComponent } from './homepage/app.homepage';
-import { AppCreate_orderModule } from './create_order/app.create_order';
+import { AppCreateorderComponent } from './create_order/app.create_order';
 import { AppOrder_approveModule } from './order_approve/app.order_approve';
 import { AppService } from './services/app.service';
 import { NotFoundComponent } from './not_found_component/not_found';
@@ -18,16 +18,23 @@ import { AppUserService } from './services/app.user.service';
 import { AppAuthService } from './services/app.auth.service';
 import { AuthGuard } from './guard/auth.guard';
 import { AppAuthenticationComponent } from './authentication/app.authentication';
+import { AuthErrorComponent } from './auth_error_component/auth_error';
+import { AppProfileComponent } from './profile/app.profile';
+import { AppUsersComponent } from './users/app.users';
+import { AppStatementService } from './services/app.statement.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppHomepageComponent,
     AppDriversComponent,
-    AppCreate_orderModule,
+    AppCreateorderComponent,
     AppOrder_approveModule,
     AppAlertComponent,
     AppAuthenticationComponent,
+    AppProfileComponent,
+    AppUsersComponent,
+    AuthErrorComponent,
     NotFoundComponent
   ],
   imports: [
@@ -36,7 +43,14 @@ import { AppAuthenticationComponent } from './authentication/app.authentication'
     FormsModule,
     RouterModule.forRoot( route )
   ],
-  providers: [ AuthGuard, AppService, AppAlertService, AppUserService, AppAuthService ],
+  providers: [
+    AuthGuard,
+    AppService,
+    AppAlertService,
+    AppUserService,
+    AppAuthService,
+    AppStatementService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -11,9 +10,9 @@ export class AppAuthService {
     return this.http.post<any>('/api/authenticate', { e_mail: e_mail, password: password })
       .map(user => {
         if (user) {
-          localStorage.setItem('currentUser', JSON.stringify(1));
+          localStorage.setItem('currentUser', JSON.stringify(user));
         }
-        return(user);
+        return user;
       });
   }
 
@@ -23,7 +22,6 @@ export class AppAuthService {
     if (token) {
       return true;
     }
-
     return false;
   }
 

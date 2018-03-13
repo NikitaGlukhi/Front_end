@@ -45,4 +45,40 @@ export class AppService {
         catchError(this.handleError)
       )
   }
+
+  getShippingCity() {
+    console.log('Success');
+    return this.http.get('api/cities')
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  getShippingOffice(city1) {
+    console.log(city1);
+    const options = city1 ?
+      { params: new HttpParams().set('value', city1) } : {};
+    return this.http.get('api/offices', options )
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  getDeliveryCity() {
+    console.log('Status: Success!');
+    return this.http.get('/api/cities')
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+  getDeliveryAddress(city2) {
+    console.log(city2);
+    const options = city2 ?
+      { params: new HttpParams().set('value', city2) } : {};
+    return this.http.get('api/offices', options)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
 }

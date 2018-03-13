@@ -1,68 +1,73 @@
-body {
-  margin: 0;
-  font-family: 'Muli', sans-serif;
+.block-menu {
+  display: block;
+  background-color: #0d9d05;
 }
 
-.menu {
-  font-weight: 100;
-  background: #efefef;
-  width: 150px;
-  height: 100%;
-  padding-left: 50px;
-  position: fixed;
-  z-index: 100;
-  -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
-  right: -130px;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-  color: #222;
+.block-menu li {
+  display: inline-block;
 }
-.menu:hover, .menu:focus {
-  transform: translate3d(-130px, 0, 0);
-  animation-timing-function: 1s ease-in;
-}
-.menu .title {
-  top: 50%;
-  position: absolute;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: rotate(270deg);
-  left: 10px;
-  font-weight: 800;
-  font-size: 15px;
-}
-.menu .nav {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  font-weight: 100;
-}
-.menu .nav li {
-  padding-bottom: 30px;
-  list-style-type: none;
-}
-.menu .nav li a {
+
+.block-menu li a {
+  background-color: #0d9d05;
   display: block;
   text-decoration: none;
-  color: inherit;
-  transition: all 0.3s;
-  -webkit-transition: all 0.3s;
-}
-.menu .nav li a:hover {
-  color: #aaa;
+  font-family: 'Passion One', Arial, sans-serif;
+  text-transform: uppercase;
+  overflow: visible;
+  line-height: 20px;
+  font-size: 22px;
+  padding: 15px 10px;
 }
 
-.intro {
-  position: center;
-  top: 30%;
-  margin: 0 auto;
+/* animation domination */
+.three-d {
+  perspective: 200px;
+  transition: all .07s linear;
+  position: relative;
+  cursor: pointer;
+}
+/* complete the animation! */
+.three-d:hover .three-d-box,
+.three-d:focus .three-d-box {
+  transform: translateZ(-25px) rotateX(90deg);
+}
+
+.three-d-box {
+  transition: all .3s ease-out;
+  transform: translatez(-25px);
+  transform-style: preserve-3d;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
   left: 0;
-  right: 0;
-  font-size: 45px;
-  text-align: center;
-  font-style: italic;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
+/*
+	put the "front" and "back" elements into place with CSS transforms,
+	specifically translation and translatez
+*/
+.front {
+  transform: rotatex(0deg) translatez(25px);
+}
+
+.back {
+  transform: rotatex(-90deg) translatez(25px);
+  background-color: #0d9d05;
+}
+
+.front, .back {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #0d9d05;
+  padding: 15px 10px;
+  color: #fbfbff;
+  pointer-events: none;
+  box-sizing: border-box;
+}

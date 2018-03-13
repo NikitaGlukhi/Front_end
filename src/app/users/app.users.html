@@ -1,0 +1,15 @@
+<h1>Список всех пользователей</h1>
+<table id="customers">
+  <tr style="text-align: center">
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Никнейм</th>
+    <th>Зарегистрирован</th>
+  </tr>
+  <tr *ngFor="let user of users" style="text-align: center">
+    <td>{{user.last_name}}</td>
+    <td>{{user.first_name}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.createdAt}}</td>
+  </tr>
+</table>

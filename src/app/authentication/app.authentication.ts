@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AppUserService } from '../services/app.user.service';
 import { AppAlertService } from '../services/app.alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,10 +10,9 @@ import { AppAuthService } from '../services/app.auth.service';
   styleUrls: ['./app.authentication.css', './app.email.css', './app.number.css', './app.password.css', './app.select.css']
 })
 
-export class AppAuthenticationComponent implements OnInit {
+export class AppAuthenticationComponent {
   model: any = {};
   loading = false;
-  returnUrl: string;
 
   condition: boolean = true;
 
@@ -29,7 +28,6 @@ export class AppAuthenticationComponent implements OnInit {
 
   register() {
     this.loading = true;
-    console.log(1111, this.model);
     this.userService.createUser(this.model)
       .subscribe(data => {
           this.alertService.success('Registration successful', true);
@@ -43,16 +41,11 @@ export class AppAuthenticationComponent implements OnInit {
       )
   }
 
-  ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
-  }
-
   login() {
     this.loading = true;
-    console.log(3333, this.model);
     this.authService.login(this.model.e_mail, this.model.password)
       .subscribe(data => {
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate(['/']);
         },
         error => {
           this.alertService.error(error);

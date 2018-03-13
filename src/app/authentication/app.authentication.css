@@ -110,7 +110,7 @@ input[type="text"] {
   box-sizing: border-box;
   width: 25%;
   height: calc(3em + 1px);
-  margin: 0 0 1em;
+  margin: 0 0 2em;
   padding: 1em;
   border: 1px solid #ccc;
   background: #fff;

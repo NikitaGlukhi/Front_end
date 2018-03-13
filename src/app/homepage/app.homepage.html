@@ -1,5 +1,5 @@
-<h2 xmlns="" xmlns="">Well come!</h2>
-<h1>Список городов и отделений</h1>
+<h2 style="text-align: center">Well come!</h2>
+<h1 style="text-align: center">Список городов и отделений</h1>
 <div>
 <p>
 <select id="soflow" [(ngModel)]="City" (change)="myFunction()">
@@ -14,8 +14,8 @@
 </select>
 </p>
 </div>
-<h3>Город: {{ City ? City.city_name : ''}}</h3>
-<h3>Адрес отделения: {{ Office ? Office.address : '' }}</h3>
-<h3>№ отделения: {{ Office ? Office.office_number : '' }}</h3>
-<h3>Начальник отделения: {{ Office ? Office.principal : '' }}</h3>
-<h3>Время работы: {{ Office ? Office.work_time : '' }} - {{ Office ? Office.work_time_end : ''}}</h3>
+<h3 style="text-align: center">Город: {{ City ? City.city_name : ''}}</h3>
+<h3 style="text-align: center">Адрес отделения: {{ Office ? Office.address : '' }}</h3>
+<h3 style="text-align: center">№ отделения: {{ Office ? Office.office_number : '' }}</h3>
+<h3 style="text-align: center">Начальник отделения: {{ Office ? Office.principal : '' }}</h3>
+<h3 style="text-align: center">Время работы: {{ Office ? Office.work_time : '' }} - {{ Office ? Office.work_time_end : ''}}</h3>

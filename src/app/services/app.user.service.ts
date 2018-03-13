@@ -9,6 +9,7 @@ export class AppUserService {
   constructor(private http: HttpClient) {  }
 
   getAll() {
+    console.log('Got data of users');
     return this.http.get<AppUserModel[]>('/api/users');
   }
 
@@ -19,10 +20,6 @@ export class AppUserService {
   createUser(user: AppUserModel) {
     console.log(2222, user);
     return this.http.post('/api/users', user);
-  }
-
-  updateUser(user: AppUserModel) {
-    return this.http.put('/api/users' + user.user_id, user);
   }
 
   deleteUSer(user_id: number) {

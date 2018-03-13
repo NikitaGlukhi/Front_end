@@ -1,18 +1,61 @@
-<div class="menu">
-<h3 class="intro" style="text-align: center">Post Office</h3>
-<div class="title">MENU</div>
-  <ul class="nav">
-    <li>
-      <p><a routerLink="homepage">Домашняя страница</a></p>
-      <p><a routerLink="create-order">Сформировать заказ</a></p>
-      <p><a routerLink="order-approve">Обработка заказов</a></p>
-      <p><a routerLink="drivers">Список водителей</a></p>
-      <p><a routerLink="#">Мой профиль</a></p>
-      <p><a routerLink="authentication" *ngIf="!auth.isAuthentcated()">Log In</a></p>
-      <p><a routerLink="/" *ngIf="auth.isAuthentcated()" (click)="auth.logout()">Log Out</a></p>
-    </li>
-  </ul>
-</div>
+<ul class="block-menu">
+  <li><a routerLink="homepage" class="three-d">
+    Домашняя страница
+    <span aria-hidden="true" class="three-d-box">
+			<span class="front">Домашняя страница</span>
+			<span class="back">Домашняя страница</span>
+		</span>
+  </a></li>
+  <li><a routerLink="create-order" *ngIf="auth.isAuthentcated()" class="three-d">
+    Сформитровать заказ
+    <span aria-hidden="true" class="three-d-box">
+			<span class="front">Сформитровать заказ</span>
+			<span class="back">Сформитровать заказ</span>
+		</span>
+  </a></li>
+  <li><a routerLink="order-approve" *ngIf="auth.isAuthentcated()" class="three-d">
+    Обработка заказов
+    <span aria-hidden="true" class="three-d-box">
+      <span class="front">Обработка заказов</span>
+      <span class="back">Обработка заказов</span>
+    </span>
+  </a></li>
+  <li><a routerLink="users" *ngIf="auth.isAuthentcated()" class="three-d">
+    Пользователи
+    <span aria-hidden="true" class="three-d-box">
+      <span class="front">Пользователи</span>
+      <span class="back">Пользователи</span>
+    </span>
+  </a></li>
+  <li><a routerLink="profile" *ngIf="auth.isAuthentcated()" class="three-d">
+    Мой профиль
+    <span aria-hidden="true" class="three-d-box">
+      <span class="front">Мой профиль</span>
+      <span class="back">Мой профиль</span>
+    </span>
+  </a></li>
+  <li><a routerLink="drivers" class="three-d">
+    Список водителей
+    <span aria-hidden="true" class="three-d-box">
+      <span class="front">Список водителей</span>
+      <span class="back">Список водителей</span>
+    </span>
+  </a></li>
+  <li><a routerLink="authentication" *ngIf="!auth.isAuthentcated()" class="three-d">
+    Log In
+    <span aria-hidden="true" class="three-d-box">
+      <span class="front">Log In</span>
+      <span class="back">Log In</span>
+    </span>
+  </a></li>
+  <li><a routerLink="/" aria-hidden="true" *ngIf="auth.isAuthentcated()" (click)="auth.logout()" class="three-d">
+    Log Out
+    <span aria-hidden="true" class="three-d-box">
+      <span class="front">Log Out</span>
+      <span class="back">Log Out</span>
+    </span>
+  </a></li>
+</ul>
 
 <router-outlet></router-outlet>
 
