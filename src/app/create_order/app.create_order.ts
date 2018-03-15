@@ -47,7 +47,7 @@ export class AppCreateorderComponent {
       console.log('Got data of delivery_city');
       this.cities2 = data;
     });
-    this.current_User = JSON.parse(localStorage.getItem('currentUser'))[0];
+    this.current_User = JSON.parse(localStorage.getItem('currentUser'));
   };
 
   myFunction() {
@@ -63,8 +63,9 @@ export class AppCreateorderComponent {
   }
 
   create_statement() {
+    console.log('this.current_User', this.current_User);
     this.loading = true;
-    this.orderService.createOrder(this.model1)
+    this.orderService.createOrder(this.model1, this.current_User.user_id)
       .subscribe(data => {
         this.model1 = data;
         alert('Заказ успешно сформирован!');

@@ -1,54 +1,56 @@
 <ul class="block-menu">
-  <li><a routerLink="homepage" class="three-d">
+  <img src="http://vignette2.wikia.nocookie.net/epicrapbattlesofhistory/images/c/cb/Internet-troll-face-explorer.png/revision/latest?cb=20140216160819">
+  <h1>Post office</h1>
+  <li><a routerLink="homepage" routerLinkActive="active" class="three-d">
     Домашняя страница
     <span aria-hidden="true" class="three-d-box">
 			<span class="front">Домашняя страница</span>
 			<span class="back">Домашняя страница</span>
 		</span>
   </a></li>
-  <li><a routerLink="create-order" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li><a routerLink="create-order" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
     Сформитровать заказ
     <span aria-hidden="true" class="three-d-box">
 			<span class="front">Сформитровать заказ</span>
 			<span class="back">Сформитровать заказ</span>
 		</span>
   </a></li>
-  <li><a routerLink="order-approve" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li><a routerLink="order-approve" routerLinkActive="active" *ngIf="auth.isAuthentcated() && currentUser?.status == 'admin'" class="three-d">
     Обработка заказов
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Обработка заказов</span>
       <span class="back">Обработка заказов</span>
     </span>
   </a></li>
-  <li><a routerLink="users" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li><a routerLink="users" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
     Пользователи
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Пользователи</span>
       <span class="back">Пользователи</span>
     </span>
   </a></li>
-  <li><a routerLink="profile" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li><a routerLink="profile" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
     Мой профиль
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Мой профиль</span>
       <span class="back">Мой профиль</span>
     </span>
   </a></li>
-  <li><a routerLink="drivers" class="three-d">
+  <li><a routerLink="drivers" routerLinkActive="active" class="three-d">
     Список водителей
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Список водителей</span>
       <span class="back">Список водителей</span>
     </span>
   </a></li>
-  <li><a routerLink="authentication" *ngIf="!auth.isAuthentcated()" class="three-d">
+  <li><a routerLink="authentication" routerLinkActive="active" *ngIf="!auth.isAuthentcated()" class="three-d">
     Log In
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Log In</span>
       <span class="back">Log In</span>
     </span>
   </a></li>
-  <li><a routerLink="/" aria-hidden="true" *ngIf="auth.isAuthentcated()" (click)="auth.logout()" class="three-d">
+  <li><a routerLink="/" routerLinkActive="active" aria-hidden="true" *ngIf="auth.isAuthentcated()" (click)="auth.logout()" class="three-d">
     Log Out
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Log Out</span>

@@ -13,7 +13,7 @@ export class AppProfileComponent implements OnInit {
   users: AppUserModel[] = [];
 
   constructor(private userService: AppUserService) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'))[0];
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {

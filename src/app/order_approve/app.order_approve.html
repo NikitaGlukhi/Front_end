@@ -1,13 +1,16 @@
-<form>
-<ul class="buttonChest">
-  <li>
-    <div class="button red" (click)="toggle()">Отказать</div>
-    <span class="click">Указать причину отказа</span>
-    <input type="text" *ngIf="!condition" /><button *ngIf="!condition">Отправить</button>
-  </li>
-  <li>
-    <div class="button green">Подтвердить</div>
-    <span class="click">Сохранить заказ в базу данных</span>
-  </li>
-</ul>
-</form>
+<div class="buttons" *ngFor="let order of orders">
+    <div class="rounded-list">
+      <li><a>Отправитель(user_id): {{order.user_id}}</a></li>
+      <li><a>Название товара: {{order.product_name}}</a></li>
+      <li><a>Количество: {{order.count}}</a></li>
+      <li><a>Масса товара(общая): {{order.weight}}</a></li>
+      <li><a>Условия хранения: {{order.storage_conditions}}</a></li>
+      <li><a>Город отправлнеия: {{order.shipping_city}}</a></li>
+      <li><a>Адрес отправления: {{order.shipping_address}}</a>
+      <li><a>Адрес доставки: {{order.delivery_address}}</a></li>
+      <li><a>Город доставки: {{order.delivery_city}}</a></li>
+      <button class="fill">Принять</button>
+      <button class="fill1">Отказать</button>
+    </div>
+</div>
+

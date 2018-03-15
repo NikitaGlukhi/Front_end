@@ -1,6 +1,6 @@
 .block-menu {
   display: block;
-  background-color: #0d9d05;
+  background-color: #00a0c4;
 }
 
 .block-menu li {
@@ -8,7 +8,7 @@
 }
 
 .block-menu li a {
-  background-color: #0d9d05;
+  background-color: #00a0c4;
   display: block;
   text-decoration: none;
   font-family: 'Passion One', Arial, sans-serif;
@@ -55,7 +55,7 @@
 
 .back {
   transform: rotatex(-90deg) translatez(25px);
-  background-color: #0d9d05;
+  background-color: #00a0c4;
 }
 
 .front, .back {
@@ -65,9 +65,26 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: #0d9d05;
+  background: #00a0c4;
   padding: 15px 10px;
   color: #fbfbff;
   pointer-events: none;
   box-sizing: border-box;
+}
+
+h1 {
+  top: 0;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  color: #00ffeb;
+  font-size: 45px;
+  text-align: center;
+  font-style: italic;
+}
+
+img {
+  width: 85px;
+  height: 85px;
+  padding: 0 773px;
 }

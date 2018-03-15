@@ -1,87 +1,46 @@
-.buttonChest {
-  top: 20px;
+div {
+  counter-reset: li; /* Устанавливает идентификатор */
+  list-style: none; /* Удаляем стандартную нумерацию */
+  font: 15px 'trebuchet MS', 'lucida sans';
+  padding: 0;
+  margin-bottom: 2em;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+.rounded-list a{
   position: relative;
-  list-style: none;
   display: block;
-  width: 100%;
-  max-width: 1480px;
-  margin: 0 auto;
+  padding: .4em .4em .4em 2em;
+  margin: .5em 0;
+  background: #ddd;
+  color: #444;
+  text-decoration: none;
+  border-radius: .3em;
+  transition: all .3s ease-out;
 }
-.buttonChest li {
-  display: inline-block;
-  position: relative;
-  min-height: 80px;
-  margin: 20px;
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+
+.rounded-list a:hover{
+  background: #eee;
 }
-.buttonChest li .click {
+
+.rounded-list a:hover:before{
+  transform: rotate(360deg);
+}
+
+.rounded-list a:before{
+  content: counter(li);
+  counter-increment: li;
   position: absolute;
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background: #87ceeb;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid #fff;
   text-align: center;
-  font-family: "Lato", sans-serif;
-  color: #4d4d4d;
-  text-transform: uppercase;
-  width: 100%;
-  top: 16px;
-  z-index: -1;
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-.buttonChest li:hover .click {
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-  background: #fff;
-  top: 56px;
-  position: absolute;
-  padding-top: 4px;
-  padding-bottom: 5px;
-}
-.buttonChest li:hover {
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-  -webkit-transform: scale(0.9) rotate(3deg);
-  -moz-transform: scale(0.9) rotate(3deg);
-  -ms-transform: scale(0.9) rotate(3deg);
-  -o-transform: scale(0.9) rotate(3deg);
-  transform: scale(0.9) rotate(3deg);
-}
-
-.button {
-  font-family: "Lato", sans-serif;
-  font-size: 1.8em;
-  color: #fff;
-  font-weight: 400;
-  text-transform: uppercase;
-  padding: 10px 40px 10px 40px;
-  cursor: pointer;
-  box-shadow: 0 4px 5px 0 rgba(50, 50, 50, 0.75);
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  transition: all 0.2s;
-}
-.button:hover {
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-  box-shadow: none;
-  border-bottom: solid 8px #fff;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-@media only screen and (max-width: 762px) {
-  .headText h1 {
-    font-size: 4em;
-  }
-}
-.green {
-  background: #67bd41;
-}
-
-.red {
-  background: #e74c3c;
+  font-weight: bold;
+  border-radius: 2em;
+  transition: all .3s ease-out;
 }

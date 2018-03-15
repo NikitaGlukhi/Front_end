@@ -1,6 +1,6 @@
 <button *ngIf="!condition" (click)="toggle()">Log In</button>
 <button *ngIf="condition" (click)="toggle()" >Sign Up</button>
-<div *ngIf="!condition">
+<div *ngIf="!condition" class="reg">
   <h2>Регистрация</h2>
   <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate style="position: center" method="POST">
     <div class="form-group" [ngClass]="{'has error': f.submitted && !username.valid}">
@@ -47,7 +47,7 @@
   </form>
 </div>
 
-<div *ngIf="condition">
+<div *ngIf="condition" class="log">
   <h2>Авторизация</h2>
   <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate method="POST">
     <div class="form-group" [ngClass]="{'has error': f.submitted && !e_mail.valid}">

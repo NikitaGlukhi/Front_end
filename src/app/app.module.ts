@@ -9,7 +9,7 @@ import { route } from './app.routing';
 import { AppDriversComponent } from './drivers/app.drivers';
 import { AppHomepageComponent } from './homepage/app.homepage';
 import { AppCreateorderComponent } from './create_order/app.create_order';
-import { AppOrder_approveModule } from './order_approve/app.order_approve';
+import { AppOrderApproveComponent } from './order_approve/app.order_approve';
 import { AppService } from './services/app.service';
 import { NotFoundComponent } from './not_found_component/not_found';
 import { AppAlertComponent } from './alert/app.alert.component';
@@ -29,7 +29,7 @@ import { AppStatementService } from './services/app.statement.service';
     AppHomepageComponent,
     AppDriversComponent,
     AppCreateorderComponent,
-    AppOrder_approveModule,
+    AppOrderApproveComponent,
     AppAlertComponent,
     AppAuthenticationComponent,
     AppProfileComponent,

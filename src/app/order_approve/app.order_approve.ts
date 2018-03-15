@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AppStatementService } from '../services/app.statement.service';
 
 @Component ({
   selector: 'order-approve',
   templateUrl: './app.order_approve.html',
-  styleUrls: ['./app.order_approve.css']
+  styleUrls: ['./app.order_approve.css', './button.scss', './button1.scss']
 })
 
-export class AppOrder_approveModule {
+export class AppOrderApproveComponent implements OnInit {
+  orders: any = [];
 
-  condition: boolean = true;
+  constructor(private order: AppStatementService) {  }
 
-  toggle() {
-    this.condition = !this.condition
+  ngOnInit() {
+    this.order.getOrderData().subscribe(data => {
+      this.orders = data
+    })
   }
 }
