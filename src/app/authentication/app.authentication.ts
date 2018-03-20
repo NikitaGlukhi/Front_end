@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppUserService } from '../services/app.user.service';
 import { AppAlertService } from '../services/app.alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,9 +10,10 @@ import { AppAuthService } from '../services/app.auth.service';
   styleUrls: ['./app.authentication.css', './app.email.css', './app.number.css', './app.password.css', './app.select.css']
 })
 
-export class AppAuthenticationComponent {
+export class AppAuthenticationComponent implements OnInit {
   model: any = {};
   loading = false;
+  returnUrl: string;
 
   condition: boolean = true;
 
@@ -41,11 +42,15 @@ export class AppAuthenticationComponent {
       )
   }
 
+  ngOnInit() {
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/homepage';
+  }
+
   login() {
     this.loading = true;
     this.authService.login(this.model.e_mail, this.model.password)
       .subscribe(data => {
-          this.router.navigate(['/']);
+          this.router.navigate([this.returnUrl])
         },
         error => {
           this.alertService.error(error);

@@ -22,6 +22,7 @@ import { AuthErrorComponent } from './auth_error_component/auth_error';
 import { AppProfileComponent } from './profile/app.profile';
 import { AppUsersComponent } from './users/app.users';
 import { AppStatementService } from './services/app.statement.service';
+import { AppModerComponent } from './moder_create/app.moder';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AppStatementService } from './services/app.statement.service';
     AppAuthenticationComponent,
     AppProfileComponent,
     AppUsersComponent,
+    AppModerComponent,
     AuthErrorComponent,
     NotFoundComponent
   ],

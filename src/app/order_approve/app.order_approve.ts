@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppStatementService } from '../services/app.statement.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component ({
   selector: 'order-approve',
@@ -10,11 +11,30 @@ import { AppStatementService } from '../services/app.statement.service';
 export class AppOrderApproveComponent implements OnInit {
   orders: any = [];
 
-  constructor(private order: AppStatementService) {  }
+  refresh(): void {
+    window.location.reload();
+  }
+
+  constructor(private order: AppStatementService, private route: ActivatedRoute, private router: Router) {  }
 
   ngOnInit() {
     this.order.getOrderData().subscribe(data => {
-      this.orders = data
+      this.orders = data;
+      console.log(this.orders);
+    })
+  }
+
+  orderApprove(id) {
+    this.order.approveOrder(id).subscribe(data => {
+      this.orders = data;
+      this.router.navigate(['/order-approve'])
+    })
+  }
+
+  orderRefuse(id) {
+    this.order.refuseOrder(id).subscribe(data => {
+      this.orders = data;
+      this.router.navigate(['/order-approve'])
     })
   }
 }

@@ -22,6 +22,11 @@ export class AppUserService {
     return this.http.post('/api/users', user);
   }
 
+  createModer(user: AppUserModel) {
+    console.log(2222, user);
+    return this.http.post('/api/moder', user);
+  }
+
   deleteUSer(user_id: number) {
     return this.http.delete('api/users' + user_id)
   }

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 
 import { Statement } from '../models/statement';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import {catchError} from "rxjs/operators";
+import { catchError } from 'rxjs/operators';
 
 @Injectable()
 export class AppStatementService {
@@ -36,5 +36,29 @@ export class AppStatementService {
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+  approveOrder(id) {
+    console.log(id);
+     return this.http.put('api/approve/' + id, {})
+       .pipe(
+         catchError(this.handleError)
+       );
+  }
+
+  refuseOrder(id) {
+    console.log(id);
+    return this.http.put('api/refuse/' + id, {})
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  myOrders(userId: number) {
+    console.log(userId);
+     return this.http.get('api/myorder/' + userId)
+       .pipe(
+         catchError(this.handleError)
+       );
   }
 }

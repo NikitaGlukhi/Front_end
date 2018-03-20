@@ -5,7 +5,7 @@ export class Statement {
   weight: number;
   storage_conditions: string;
   count: number;
-  status: boolean;
+  status: string;
   shipping_city: string;
   shipping_address: string;
   delivery_city: string;

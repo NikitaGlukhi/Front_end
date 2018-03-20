@@ -1,11 +1,22 @@
-<div class="col-md-6 col-md-offset-3">
-  <h1>Hi, {{currentUser.first_name}}</h1>
-  <p>You're logged in with Angular 2!!</p>
-  <h2>Персональные данные</h2>
-  <h3>Полное имя: {{currentUser.last_name}} {{currentUser.first_name}}</h3>
-  <h3>Никнейм: {{currentUser.username}}</h3>
-  <h3>Номер телефона: {{currentUser.phone_number}}</h3>
-  <h3><p>Статус: <a style="color: red">{{currentUser.status}}</a></p></h3>
-  <h3>Пол: {{currentUser.gender}}</h3>
-  <h3>Возраст: {{currentUser.age}}</h3>
+<div class="card">
+  <h1>{{currentUser.first_name}} {{currentUser.last_name}}</h1>
+  <p>Никнейм: {{currentUser.username}}</p>
+  <p>Номер телефона(+380): {{currentUser.phone_number}}</p>
+  <p>Статус: {{currentUser.status}}</p>
+  <p>Пол: {{currentUser.gender}}</p>
+  <p>Возраст: {{currentUser.age}}</p>
+</div>
+<div>
+  Мои заказы
+<form *ngFor="let myorder of Orders">
+  <li><a>Название товара: {{myorder.product_name}}</a></li>
+  <li><a>Количество: {{myorder.count}}</a></li>
+  <li><a>Масса товара(общая): {{myorder.weight}}</a></li>
+  <li><a>Условия хранения: {{myorder.storage_conditions}}</a></li>
+  <li><a>Город отправлнеия: {{myorder.shipping_city}}</a></li>
+  <li><a>Адрес отправления: {{myorder.shipping_address}}</a>
+  <li><a>Город доставки: {{myorder.delivery_city}}</a></li>
+  <li><a>Адрес доставки: {{myorder.delivery_address}}</a></li>
+  <li><a>Одобрено: {{myorder.updatedAt}}</a></li>
+</form>
 </div>

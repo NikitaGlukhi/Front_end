@@ -10,15 +10,17 @@ import { AppAuthenticationComponent } from './authentication/app.authentication'
 import { AuthErrorComponent } from './auth_error_component/auth_error';
 import { AppProfileComponent } from './profile/app.profile';
 import { AppUsersComponent } from './users/app.users';
+import { AppModerComponent } from './moder_create/app.moder';
 
 export const route: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'homepage' },
+  { path: '', pathMatch: 'full', redirectTo: 'authentication' },
+  { path: 'authentication', component: AppAuthenticationComponent },
   { path: 'homepage', component: AppHomepageComponent },
   { path: 'create-order', component: AppCreateorderComponent, canActivate: [AuthGuard] },
   { path: 'drivers', component: AppDriversComponent },
   { path: 'order-approve', component: AppOrderApproveComponent, canActivate: [AuthGuard] },
-  { path: 'authentication', component: AppAuthenticationComponent },
   { path: 'users', component: AppUsersComponent },
+  { path: 'moder-creation', component: AppModerComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: AppProfileComponent, canActivate: [AuthGuard] },
   { path: 'authentication-error', component: AuthErrorComponent },
   { path: '**', component: NotFoundComponent }
