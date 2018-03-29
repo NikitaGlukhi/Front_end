@@ -13,9 +13,9 @@ import { AppUsersComponent } from './users/app.users';
 import { AppModerComponent } from './moder_create/app.moder';
 
 export const route: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'authentication' },
-  { path: 'authentication', component: AppAuthenticationComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'homepage' },
   { path: 'homepage', component: AppHomepageComponent },
+  { path: 'authentication', component: AppAuthenticationComponent },
   { path: 'create-order', component: AppCreateorderComponent, canActivate: [AuthGuard] },
   { path: 'drivers', component: AppDriversComponent },
   { path: 'order-approve', component: AppOrderApproveComponent, canActivate: [AuthGuard] },

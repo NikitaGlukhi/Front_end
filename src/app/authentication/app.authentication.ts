@@ -7,7 +7,7 @@ import { AppAuthService } from '../services/app.auth.service';
 @Component({
   selector: 'authentication',
   templateUrl: './app.authentication.html',
-  styleUrls: ['./app.authentication.css', './app.email.css', './app.number.css', './app.password.css', './app.select.css']
+  styleUrls: ['./app.authentication.css']
 })
 
 export class AppAuthenticationComponent implements OnInit {
@@ -15,7 +15,7 @@ export class AppAuthenticationComponent implements OnInit {
   loading = false;
   returnUrl: string;
 
-  condition: boolean = true;
+  condition = true;
 
   toggle() {
     this.condition = !this.condition;

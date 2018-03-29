@@ -1,3 +1,10 @@
+h2,
+h3 {
+  font-family: 'Passion One', Arial, sans-serif;
+}
+select {
+  position: center;
+}
 select#soflow, select#soflow-color {
   -webkit-appearance: button;
   -webkit-border-radius: 2px;

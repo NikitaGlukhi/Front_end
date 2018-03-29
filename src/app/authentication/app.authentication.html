@@ -1,8 +1,20 @@
-<button *ngIf="!condition" (click)="toggle()">Log In</button>
-<button *ngIf="condition" (click)="toggle()" >Sign Up</button>
+<body>
+<ul class="social-container twitter" *ngIf="condition" (click)="toggle()">
+  <div class="social-cube">
+    <div class="front">
+      No account?
+    </div>
+    <div class="bottom">
+      Sign Up
+    </div>
+  </div>
+</ul>
+</body>
 <div *ngIf="!condition" class="reg">
-  <h2>Регистрация</h2>
   <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate style="position: center" method="POST">
+    <h1>Регистрация</h1>
+    <fieldset>
+      <legend><span class="number">1</span>Ваши контактные данные</legend>
     <div class="form-group" [ngClass]="{'has error': f.submitted && !username.valid}">
       <input id="first_name" type="text" class="form-control" name="first_name" [(ngModel)]="model.first_name" #first_name="ngModel" placeholder="First Name" autocomplete="off" required />
       <div *ngIf="f.submitted && !first_name.valid" class="help-block">First Name is required</div>
@@ -16,9 +28,12 @@
       <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
     </div>
     <div class="from-group" [ngClass]="{'has error': f.submitted && !phone_number}">
-      <input id="phone_number" type="number" class="form-control" name="phone_number" [(ngModel)]="model.phone_number" #phone_number="ngModel" placeholder="Phone Number" autocomplete="off" required />
+      <input id="phone_number" type="number" class="form-control" name="phone_number" [(ngModel)]="model.phone_number" #phone_number="ngModel" placeholder="Phone Number (+380)" autocomplete="off" required />
       <div *ngIf="f.submitted && !phone_number">Phone number is required</div>
     </div>
+    </fieldset>
+    <fieldset>
+      <legend><span class="number">2</span>Эл.почта, пароль</legend>
     <div class="form-group" [ngClass]="{'has error': f.submitted && !e_mail.valid}">
       <input id="e_mail" type="email" class="form-control" name="e_mail" [(ngModel)]="model.e_mail" #e_mail="ngModel" placeholder="E-mail" autocomplete="off" required />
       <div *ngIf="f.submitted && !e_mail">E-mail is required</div>
@@ -27,6 +42,9 @@
       <input id="password" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="Password" autocomplete="off" required />
       <div *ngIf="f.submitted && !password.valid">Password is required</div>
     </div>
+    </fieldset>
+    <fieldset>
+      <legend><span class="number">3</span>Прочая информация</legend>
     <div class="form-group" [ngClass]="{'has error': f.submitted && !gender.valid}">
       <select id="gender" type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required>
         <option [ngValue]="undefined" disabled selected>Select your gender</option>
@@ -39,6 +57,7 @@
       <input id="age" type="number" class="form-control" name="age" [(ngModel)]="model.age" #age="ngModel" placeholder="Age" autocomplete="off" required />
       <div *ngIf="f.submitted && !age.valid">Age is required</div>
     </div>
+    </fieldset>
     <div class="form-group">
       <button [disabled]="loading" class="btn btn-primary">Register</button>
       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
@@ -48,19 +67,26 @@
 </div>
 
 <div *ngIf="condition" class="log">
-  <h2>Авторизация</h2>
   <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate method="POST">
+    <h1>Авторизация</h1>
+    <fieldset>
+      <legend><span class="number">1</span>Эл.почта</legend>
     <div class="form-group" [ngClass]="{'has error': f.submitted && !e_mail.valid}">
       <input id="e_mail2" type="email" class="form-control" name="e_mail" [(ngModel)]="model.e_mail" #e_mail="ngModel" placeholder="E-mail" required="" />
       <div *ngIf="f.submitted && !e_mail.valid" class="help-block">E-mail is required</div>
     </div>
+    </fieldset>
+    <fieldset>
+      <legend><span class="number">2</span>Пароль</legend>
     <div class="form-group" [ngClass]="{'has error': f.submitted && !password.valid}">
-      <input id="password2" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="Password" required="" />
+      <input id="password2" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="Password" autocomplete="off" required="" />
       <div *ngIf="f.submitted && !password.valid" class="help-block">Password os required</div>
     </div>
+    </fieldset>
     <div class="form-group">
       <button [disabled]="loading" class="btn btn-primary">Log In</button>
       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
     </div>
+
   </form>
 </div>

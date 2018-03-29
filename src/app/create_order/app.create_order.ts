@@ -4,11 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AppAlertService } from '../services/app.alert.service';
 import { AppStatementService } from '../services/app.statement.service';
 import { AppUserModel } from '../models/user';
+import { AppUserService } from '../services/app.user.service';
 
 @Component ({
   selector: 'create-order',
   templateUrl: './app.create_order.html',
-  styleUrls: ['./app.create_order.css', './app.createorder.less']
+  styleUrls: ['./app.create_order.css', './app.createorder.less', './toggle_switch.css']
 })
 
 export class AppCreateorderComponent {
@@ -21,8 +22,9 @@ export class AppCreateorderComponent {
   cities2: any = [];
   offices1: any = [];
   offices2: any = [];
+  users: any = [];
   current_User: AppUserModel;
-  condition: boolean = true;
+  condition = true;
   loading = false;
 
   toggle() {
@@ -37,7 +39,8 @@ export class AppCreateorderComponent {
     private route: ActivatedRoute,
     private router: Router,
     private alertService: AppAlertService,
-    private orderService: AppStatementService
+    private orderService: AppStatementService,
+    private user: AppUserService
   ) {
     this.shippingCity.getShippingCity().subscribe(data => {
       console.log('Got data of shipping_sity');
@@ -46,6 +49,9 @@ export class AppCreateorderComponent {
     this.deliveryCity.getDeliveryCity().subscribe(data => {
       console.log('Got data of delivery_city');
       this.cities2 = data;
+    });
+    this.user.getRecipient().subscribe(data => {
+      this.users = data;
     });
     this.current_User = JSON.parse(localStorage.getItem('currentUser'));
   };
@@ -74,6 +80,20 @@ export class AppCreateorderComponent {
         error => {
         this.alertService.error(error);
         this.loading = false;
-        })
+      })
+  }
+
+  create_statement1() {
+    this.loading = true;
+    this.orderService.createOrder1(this.model1, this.current_User.user_id)
+      .subscribe(data => {
+        this.model1 = data;
+        alert('Заказ успешно сформирован!');
+        this.router.navigate(['/']);
+      },
+        error => {
+        this.alertService.error(error);
+        this.loading = false;
+      })
   }
 }

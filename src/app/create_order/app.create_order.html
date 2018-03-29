@@ -1,23 +1,23 @@
 <div class="form-style-10">
   <h1>Оформите заказ<span>Имейте ввиду: ЗАКАЗЫ С ОДИНАКОВЫМИ ГОРОДАМИ ОТПРАВЛЕНИЯ И ПРИБЫТИЯ РАССМАТРИВАТЬСЯ НЕ БУДУТ!</span></h1>
-  <form name="form" (ngSubmit)="o.form.valid && create_statement()" #o="ngForm" novalidate method="POST">
+  <form name="form" (ngSubmit)="o.form.valid" #o="ngForm" novalidate method="POST">
     <div class="section"><span>1</span>Данные о товаре</div>
     <div class="form-group" [ngClass]="{'has error': o.submitted && !product_name.valid && !count.valid && !weight.valid && !storage_conditions.valid && !shipping_city.valid && shipping_address.valid && delivery_city.valid && delivery_address.valid}">
-      <label>Название товара<input type="text" class="form-control" name="product_name" [(ngModel)]="model1.product_name" #product_name="ngModel" required /></label>
+      <label>Название товара<input type="text" class="form-control" name="product_name" [(ngModel)]="model1.product_name" #product_name="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="o.submitted && !product_name.valid">Order name is required</div>
-      <label>Количество<input type="number" class="form-control" name="count" [(ngModel)]="model1.count" #count="ngModel" required /></label>
+      <label>Количество<input type="number" class="form-control" name="count" [(ngModel)]="model1.count" #count="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="o.submitted && !count.valid">Order count is required</div>
-      <label>Масса товара(общаяя)<input type="number" class="form-control" name="weight" [(ngModel)]="model1.weight" #weight="ngModel" required /></label>
+      <label>Масса товара(общаяя)<input type="number" class="form-control" name="weight" [(ngModel)]="model1.weight" #weight="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="o.submitted && !weight.valid">Order weight is required</div>
       <label>Условия хранения
         <select type="text" class="form-control" name="storage_conditions" [(ngModel)]="model1.storage_conditions" #storage_conditions="ngModel" required>
           <option [ngValue]="undefined" disabled selected>Условия храниения</option>
-          <option value="c1">Хранить при низкой температуре</option>
-          <option value="c2">Хранить при высокой температуре</option>
-          <option value="c3">Хранить при умеренной температуре</option>
-          <option value="c4">Хранить во влажных условиях</option>
-          <option value="c5">Хранить в сухих условиях</option>
-          <option value="c5">Хранить в вакууме</option>
+          <option value="Store at low temperature">Хранить при низкой температуре</option>
+          <option value="Store at high temperature">Хранить при высокой температуре</option>
+          <option value="Store at a moderate temperature">Хранить при умеренной температуре</option>
+          <option value="Store in wet conditions">Хранить во влажных условиях</option>
+          <option value="Store in dry conditions">Хранить в сухих условиях</option>
+          <option value="Store in vacuum">Хранить в вакууме</option>
         </select>
       </label>
       <div class="required" *ngIf="o.submitted && !storage_conditions.valid">Storage conditions is required</div>
@@ -60,8 +60,42 @@
       </label>
       <div class="required" *ngIf="o.submitted && !delivery_address.valid">Delivery address is required</div>
     </div>
-    <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary">Сформировать заказ</button>
+    <div class="section"><span>4</span>Укажите получателя</div>
+    <div *ngIf="condition" class="form-group" [ngClass]="{'has error': o.submitted && !recipient.valid}">
+      <label>Получатель
+      <select id="soflow4" [(ngModel)]="model1.recipient" name="recipient" #recipient="ngModel" required>
+        <option [ngValue]="undefined" disabled selected>Укажите получателя</option>
+        <option *ngFor="let user of users" [ngValue]="user">{{user.first_name}} {{user.last_name}}</option>
+      </select>
+      </label>
+      <div class="required" *ngIf="o.submitted && !recipient.valid">Recipient city is required</div>
+    </div>
+    <div *ngIf="!condition" class="form-group" [ngClass]="{'has error': !recipient_first_name.valid && !recipient_last_name.valid && !recipient_phone.valid}">
+      <label>Имя получателя
+        <input type="text" class="form-control" name="count" [(ngModel)]="model1.recipient_first_name" #recipient_first_name="ngModel" autocomplete="off" required />
+        <div class="required" *ngIf="o.submitted && !recipient_first_name.valid">Recipient name is required</div>
+      </label>
+      <label>Фамилия получателя
+        <input type="text" class="form-control" name="count" [(ngModel)]="model1.recipient_last_name" #recipient_last_name="ngModel" autocomplete="off" required />
+        <div class="required" *ngIf="o.submitted && !recipient_last_name.valid">Recipient surname is required</div>
+      </label>
+      <label>Телефон получателя
+        <input type="number" class="form-control" name="count" [(ngModel)]="model1.recipient_phone" #recipient_phone="ngModel" autocomplete="off" required />
+        <div class="required" *ngIf="o.submitted && !recipient_phone.valid">Recipient phone number is required</div>
+      </label>
+    </div>
+    <label class="checkbox">
+      <input type="checkbox" (click)="toggle()" />
+      <div class="checkbox__text"></div>
+    </label>
+    <h4 class="linear-wipe" *ngIf="!condition">Получатель не зарегистрирован</h4>
+    <h4 class="linear-wipe" *ngIf="condition">Получатель зарегистрирован</h4>
+    <div *ngIf="condition" class="form-group">
+      <button [disabled]="loading" (click)="create_statement()" class="btn btn-primary">Сформировать заказ</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+    <div *ngIf="!condition" class="form-group">
+      <button [disabled]="loading" (click)="create_statement1()" class="btn btn-primary">Сформировать заказ!</button>
       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
     </div>
   </form>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from '../services/app.service';
+import { AppAuthService } from '../services/app.auth.service';
 
 @Component({
   selector: 'homepage',
@@ -13,7 +14,7 @@ export class AppHomepageComponent {
   cities: any = [];
   offices: any = [];
 
-    constructor(private AppCityService: AppService, private AppOfficeService: AppService) {
+    constructor(private AppCityService: AppService, private AppOfficeService: AppService, public auth: AppAuthService) {
       this.AppCityService.getCityData().subscribe(data => {
         this.cities = data;
       });

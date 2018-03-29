@@ -26,6 +26,15 @@ export class AppStatementService {
     console.log(user_id);
     return this.http.post('api/statements', {
       order: order,
+      user_id: user_id,
+
+    });
+  }
+
+  createOrder1(order1: Statement, user_id) {
+    console.log(user_id);
+    return this.http.post('api/statements1', {
+      order1: order1,
       user_id: user_id
     });
   }

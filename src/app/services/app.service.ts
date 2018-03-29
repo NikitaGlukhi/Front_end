@@ -37,6 +37,7 @@ export class AppService {
   }
 
   getOfficeData(city) {
+    console.log('Got data of offices');
     console.log(city);
     const options = city ?
       { params: new HttpParams().set('value', city) } : {};

@@ -11,10 +11,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppOrderApproveComponent implements OnInit {
   orders: any = [];
 
-  refresh(): void {
-    window.location.reload();
-  }
-
   constructor(private order: AppStatementService, private route: ActivatedRoute, private router: Router) {  }
 
   ngOnInit() {
@@ -27,14 +23,16 @@ export class AppOrderApproveComponent implements OnInit {
   orderApprove(id) {
     this.order.approveOrder(id).subscribe(data => {
       this.orders = data;
-      this.router.navigate(['/order-approve'])
+      this.router.navigate(['/order-approve']);
+      window.location.reload();
     })
   }
 
   orderRefuse(id) {
     this.order.refuseOrder(id).subscribe(data => {
       this.orders = data;
-      this.router.navigate(['/order-approve'])
+      this.router.navigate(['/order-approve']);
+      window.location.reload();
     })
   }
 }
