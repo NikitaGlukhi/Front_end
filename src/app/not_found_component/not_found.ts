@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NavbarService} from '../services/navbar.service';
 
 @Component({
   selector: 'not-found',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./not_found.scss']
 })
 
-export class NotFoundComponent {  }
+export class NotFoundComponent {
+  constructor(public nav: NavbarService) {}
+}

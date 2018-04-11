@@ -23,6 +23,10 @@ import { AppProfileComponent } from './profile/app.profile';
 import { AppUsersComponent } from './users/app.users';
 import { AppStatementService } from './services/app.statement.service';
 import { AppModerComponent } from './moder_create/app.moder';
+import { AuthAdminModerGuard } from './guard/auth.admin_moder.guard';
+import { AuthAdminGuard } from './guard/auth.admin.guard';
+import { NavbarService } from './services/navbar.service';
+import { AppCreateOrderAdminComponent } from './create_order(for admin-moder)/create_order(admin)';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import { AppModerComponent } from './moder_create/app.moder';
     AppProfileComponent,
     AppUsersComponent,
     AppModerComponent,
+    AppCreateOrderAdminComponent,
     AuthErrorComponent,
     NotFoundComponent
   ],
@@ -47,11 +52,14 @@ import { AppModerComponent } from './moder_create/app.moder';
   ],
   providers: [
     AuthGuard,
+    AuthAdminModerGuard,
+    AuthAdminGuard,
     AppService,
     AppAlertService,
     AppUserService,
     AppAuthService,
-    AppStatementService
+    AppStatementService,
+    NavbarService
   ],
   bootstrap: [ AppComponent ]
 })

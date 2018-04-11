@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppAuthService } from '../services/app.auth.service';
-import { AppUserModel } from '../models/user';
+import { NavbarService } from '../services/navbar.service';
+import { AppClientModel } from '../models/client';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +10,9 @@ import { AppUserModel } from '../models/user';
 })
 
   export class AppComponent implements OnInit {
-  currentUser: AppUserModel;
+  currentUser: AppClientModel;
 
-  constructor(public auth: AppAuthService) {}
+  constructor(public auth: AppAuthService, public nav: NavbarService) {}
 
   ngOnInit() {
     this.auth.subject.subscribe((data: any) => {

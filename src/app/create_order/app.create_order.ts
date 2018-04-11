@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../services/app.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppAlertService } from '../services/app.alert.service';
 import { AppStatementService } from '../services/app.statement.service';
 import { AppUserModel } from '../models/user';
 import { AppUserService } from '../services/app.user.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component ({
   selector: 'create-order',
@@ -12,7 +13,7 @@ import { AppUserService } from '../services/app.user.service';
   styleUrls: ['./app.create_order.css', './app.createorder.less', './toggle_switch.css']
 })
 
-export class AppCreateorderComponent {
+export class AppCreateorderComponent implements OnInit {
   model1: any = {};
   City1: any;
   City2: any;
@@ -40,7 +41,8 @@ export class AppCreateorderComponent {
     private router: Router,
     private alertService: AppAlertService,
     private orderService: AppStatementService,
-    private user: AppUserService
+    private user: AppUserService,
+    public nav: NavbarService
   ) {
     this.shippingCity.getShippingCity().subscribe(data => {
       console.log('Got data of shipping_sity');
@@ -71,7 +73,7 @@ export class AppCreateorderComponent {
   create_statement() {
     console.log('this.current_User', this.current_User);
     this.loading = true;
-    this.orderService.createOrder(this.model1, this.current_User.user_id)
+    this.orderService.createOrder(this.model1, this.current_User.user_id, this.current_User.first_name, this.current_User.last_name, this.current_User.phone_number)
       .subscribe(data => {
         this.model1 = data;
         alert('Заказ успешно сформирован!');
@@ -85,7 +87,7 @@ export class AppCreateorderComponent {
 
   create_statement1() {
     this.loading = true;
-    this.orderService.createOrder1(this.model1, this.current_User.user_id)
+    this.orderService.createOrder1(this.model1, this.current_User.user_id, this.current_User.first_name, this.current_User.last_name, this.current_User.phone_number)
       .subscribe(data => {
         this.model1 = data;
         alert('Заказ успешно сформирован!');
@@ -95,5 +97,9 @@ export class AppCreateorderComponent {
         this.alertService.error(error);
         this.loading = false;
       })
+  }
+
+  ngOnInit() {
+    this.nav.show()
   }
 }

@@ -22,20 +22,39 @@ export class AppStatementService {
       'Something bad happened; please try again later.');
   };
 
-  createOrder(order: Statement, user_id) {
+  createOrder(order: Statement, user_id, first_name, last_name, phone_number) {
     console.log(user_id);
     return this.http.post('api/statements', {
       order: order,
       user_id: user_id,
-
+      sender_fn: first_name,
+      sender_ln: last_name,
+      sender_ph: phone_number
     });
   }
 
-  createOrder1(order1: Statement, user_id) {
+  createOrder1(order1: Statement, user_id, first_name, last_name, phone_number) {
     console.log(user_id);
     return this.http.post('api/statements1', {
       order1: order1,
-      user_id: user_id
+      user_id: user_id,
+      sender_fn1: first_name,
+      sender_ln1: last_name,
+      sender_ph1: phone_number
+    });
+  }
+
+  createOrder2(order2: Statement) {
+    console.log();
+    return this.http.post('api/statements2', {
+      order2: order2,
+    });
+  }
+
+  addClient(order2: Statement) {
+    console.log();
+    return this.http.post('api/clients', {
+      client: order2,
     });
   }
 

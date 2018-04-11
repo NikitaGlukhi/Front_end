@@ -4,13 +4,13 @@ import { AppAuthService } from '../services/app.auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private auth: AppAuthService) {}
+  constructor(private router: Router, private auth: AppAuthService) {  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.auth.isAuthentcated()) {
       return true
     }
-    this.router.navigate(['/authentication-error']);
+    this.router.navigate(['/**']);
     return false;
   }
 }

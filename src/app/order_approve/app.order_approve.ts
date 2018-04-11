@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppStatementService } from '../services/app.statement.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NavbarService } from '../services/navbar.service';
 
 @Component ({
   selector: 'order-approve',
@@ -11,9 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppOrderApproveComponent implements OnInit {
   orders: any = [];
 
-  constructor(private order: AppStatementService, private route: ActivatedRoute, private router: Router) {  }
+  constructor(private order: AppStatementService, private route: ActivatedRoute, private router: Router, public nav: NavbarService) {  }
 
   ngOnInit() {
+    this.nav.show();
     this.order.getOrderData().subscribe(data => {
       this.orders = data;
       console.log(this.orders);

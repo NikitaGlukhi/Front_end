@@ -1,4 +1,4 @@
-<ul class="block-menu">
+<ul class="block-menu" *ngIf="nav.visible">
   <img src="http://vignette2.wikia.nocookie.net/epicrapbattlesofhistory/images/c/cb/Internet-troll-face-explorer.png/revision/latest?cb=20140216160819">
   <h1>Post office</h1>
   <li><a routerLink="homepage" routerLinkActive="active" class="three-d">
@@ -15,39 +15,46 @@
 			<span class="back">Сформитровать заказ</span>
 		</span>
   </a></li>
-  <li *ngIf="currentUser?.status == 'admin' || currentUser?.status === 'moderator'"><a routerLink="order-approve" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li *ngIf="currentUser?.client_status == 'admin' || currentUser?.client_status === 'moderator'"><a routerLink="order-approve" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
     Обработка заказов
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Обработка заказов</span>
       <span class="back">Обработка заказов</span>
     </span>
   </a></li>
-  <li *ngIf="currentUser?.status === 'admin'"><a routerLink="users" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li *ngIf="currentUser?.client_status === 'admin'"><a routerLink="users" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
     Пользователи
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Пользователи</span>
       <span class="back">Пользователи</span>
     </span>
   </a></li>
-  <li><a routerLink="profile" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li *ngIf="currentUser?.client_status === 'wwwwwwwww'"><a routerLink="profile" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
     Мой профиль
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Мой профиль</span>
       <span class="back">Мой профиль</span>
     </span>
   </a></li>
-  <li *ngIf="currentUser?.status === 'admin'"><a routerLink="drivers" routerLinkActive="activate" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li *ngIf="currentUser?.client_status === 'admin'"><a routerLink="drivers" routerLinkActive="activate" *ngIf="auth.isAuthentcated()" class="three-d">
     Список водителей
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Список водителей</span>
       <span class="back">Список водителей</span>
     </span>
   </a></li>
-  <li *ngIf="currentUser?.status === 'admin'"><a routerLink="moder-creation" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
+  <li *ngIf="currentUser?.client_status === 'admin'"><a routerLink="moder-creation" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
     Зарегистрировать модератора
     <span aria-hidden="true" class="three-d-box">
       <span class="front">Зарегистрировать модератора</span>
       <span class="back">Зарегистрировать модератора</span>
+    </span>
+  </a></li>
+  <li *ngIf="currentUser?.client_status == 'admin' || currentUser?.client_status === 'moderator'"><a routerLink="admin-order-creation" *ngIf="auth.isAuthentcated()" class="three-d">
+    Сформировать заказ клиента
+    <span aria-hidden="true" class="three-d-box">
+      <span class="front">Сформировать заказ клиента</span>
+      <span class="back">Сформировать заказ клиента</span>
     </span>
   </a></li>
   <li><a routerLink="authentication" routerLinkActive="active" *ngIf="!auth.isAuthentcated()" class="three-d">

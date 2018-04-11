@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppUserModel } from '../models/user';
 import { AppUserService } from '../services/app.user.service';
 import { AppStatementService } from '../services/app.statement.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'profile',
@@ -14,11 +15,12 @@ export class AppProfileComponent implements OnInit {
   users: AppUserModel[] = [];
   Orders: any = [];
 
-  constructor(private userService: AppUserService, private myOrder: AppStatementService) {
+  constructor(private userService: AppUserService, private myOrder: AppStatementService, public nav: NavbarService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
+    this.nav.show();
     this.loadAllUsers();
     this.myOrder.myOrders(this.currentUser.user_id).subscribe(data => {
       this.Orders = data

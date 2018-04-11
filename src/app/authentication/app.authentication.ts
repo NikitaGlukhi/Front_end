@@ -3,6 +3,7 @@ import { AppUserService } from '../services/app.user.service';
 import { AppAlertService } from '../services/app.alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppAuthService } from '../services/app.auth.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'authentication',
@@ -25,7 +26,8 @@ export class AppAuthenticationComponent implements OnInit {
               private router: Router,
               private userService: AppUserService,
               private alertService: AppAlertService,
-              private authService: AppAuthService) {}
+              private authService: AppAuthService,
+              public nav: NavbarService) {}
 
   register() {
     this.loading = true;
@@ -39,10 +41,14 @@ export class AppAuthenticationComponent implements OnInit {
           this.alertService.error(error);
           this.loading = false;
         }
-      )
+      );
+    this.userService.getClient().subscribe(data => {
+      this.model = data;
+    })
   }
 
   ngOnInit() {
+    this.nav.hide();
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/homepage';
   }
 

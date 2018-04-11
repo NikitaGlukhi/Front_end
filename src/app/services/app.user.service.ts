@@ -13,8 +13,8 @@ export class AppUserService {
     return this.http.get<AppUserModel[]>('/api/users');
   }
 
-  getById(user_id: number) {
-    return this.http.get('/api/users' + user_id);
+  getClient() {
+    return this.http.get('/api/client');
   }
 
   createUser(user: AppUserModel) {

@@ -1,21 +1,19 @@
+<form class="form-style">
 <h2 style="text-align: center">Well come!</h2>
 <h1 style="text-align: center">Список городов и отделений</h1>
 <div>
-<p>
-<select id="soflow" [(ngModel)]="City" (change)="myFunction()">
+<select id="soflow" [(ngModel)]="City" name="city" #city="ngModel" (change)="myFunction()">
     <option [ngValue]="undefined" disabled selected>Выбор города</option>
     <option *ngFor="let city of cities" [ngValue]=city>{{city.city_name}}</option>
 </select>
-</p>
-<p>
-<select id="soflow1" [(ngModel)]="Office">
+<select id="soflow1" [(ngModel)]="Office" name="office" #office="ngModel">
   <option [ngValue]="undefined" disabled selected>Выбор отделения</option>
   <option *ngFor="let office of offices" [ngValue]=office>{{ office.address }}</option>
 </select>
-</p>
 </div>
 <h3 style="text-align: center">Город: {{ City ? City.city_name : ''}}</h3>
 <h3 style="text-align: center">Адрес отделения: {{ Office ? Office.address : '' }}</h3>
 <h3 style="text-align: center">№ отделения: {{ Office ? Office.office_number : '' }}</h3>
 <h3 style="text-align: center">Начальник отделения: {{ Office ? Office.principal : '' }}</h3>
 <h3 style="text-align: center">Время работы: {{ Office ? Office.work_time : '' }} - {{ Office ? Office.work_time_end : ''}}</h3>
+</form>

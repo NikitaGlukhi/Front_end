@@ -11,10 +11,10 @@ select#soflow1, select#soflow-color {
   border: 1px solid #AAA;
   color: #555;
   font-size: inherit;
-  margin: 20px;
+  margin: 45px;
   overflow: hidden;
   padding: 5px 50px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 550px;
+  width: 500px;
 }

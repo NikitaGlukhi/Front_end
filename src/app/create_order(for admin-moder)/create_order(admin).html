@@ -1,0 +1,79 @@
+<div class="form-style-10">
+  <h1>Формирование заказа клиента</h1>
+  <form name="form" (ngSubmit)="a.form.valid" #a="ngForm" novalidate method="POST">
+    <div class="section"><span>1</span>Данные клиента</div>
+    <div class="form-group" [ngClass]="{'has error': a.submitted && !client_first_name.valid && !client_last_name.valid && !client_phone.valid}">
+      <label>Имя клиента<input type="text" class="form-control" name="client_first_name" [(ngModel)]="model2.client_first_name" #client_first_name="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !client_first_name.valid">Client name is required</div>
+      <label>Фамилия клиента<input type="text" class="form-control" name="client_last_name" [(ngModel)]="model2.client_last_name" #client_last_name="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !client_last_name">Client last name is required</div>
+      <label>Тел. номер<input type="text" class="form-control" name="client_phone" [(ngModel)]="model2.client_phone" #client_phone="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !client_phone.valid">Phone number is required</div>
+    </div>
+    <div class="section"><span>2</span>Данные о товаре</div>
+    <div class="form-group" [ngClass]="{'has error': a.submitted && !product_name.valid && !weight.valid && !storage_conditions.valid && !count.valid}">
+      <label>Название товара<input type="text" class="from-control" name="product_name" [(ngModel)]="model2.product_name" #product_name="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !product_name.valid">Product name is required</div>
+      <label>Количество<input type="number" class="form-control" name="count" [(ngModel)]="model2.count" #count="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !count.valid">Count is required</div>
+      <label>Вес товара<input type="number" class="form-control" name="weight" [(ngModel)]="model2.weight" #weight="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !weight.valid">Weight is required</div>
+      <label>Условия хранения
+        <select type="text" class="form-control" name="storage_conditions" [(ngModel)]="model2.storage_conditions" #storage_conditions="ngModel" required>
+          <option [ngValue]="undefined" disabled selected>Условия храниения</option>
+          <option value="Store at low temperature">Хранить при низкой температуре</option>
+          <option value="Store at high temperature">Хранить при высокой температуре</option>
+          <option value="Store at a moderate temperature">Хранить при умеренной температуре</option>
+          <option value="Store in wet conditions">Хранить во влажных условиях</option>
+          <option value="Store in dry conditions">Хранить в сухих условиях</option>
+          <option value="Store in vacuum">Хранить в вакууме</option>
+        </select>
+      </label>
+      <div class="required" *ngIf="a.submitted && !storage_conditions.valid">Storage conditions is required</div>
+    </div>
+    <div class="section"><span>3</span>Укажите пункт отправления/прибытия</div>
+    <div class="form-group" [ngClass]="{'has error': a.submitted && !shipping_city.valid && !shipping_address.valid }">
+      <label>Город отправления
+        <select  [(ngModel)]="City3" [(ngModel)]="model2.shipping_city" name="shipping_city" #shipping_city="ngModel" (change)="myFunction()" required>
+          <option [ngValue]="undefined" disabled selected>Выбор города</option>
+          <option *ngFor="let city1 of cities3" [ngValue]=city1>{{city1.city_name}}</option>
+        </select>
+      </label>
+      <div class="required" *ngIf="a.submitted && !shipping_city.valid">Shipping city is required</div>
+      <label>Адрес отправления
+        <select id="soflow1" [(ngModel)]="Office3" [(ngModel)]="model2.shipping_address" name="shipping_address" #shipping_address="ngModel" required>
+          <option [ngValue]="undefined" disabled selected>Выбор отделения</option>
+          <option *ngFor="let office1 of offices3">{{ office1.address }}</option>
+        </select>
+      </label>
+      <div class="required" *ngIf="a.submitted && !shipping_address.valid">Shipping address is required</div>
+      <label>Город доставки
+        <select id="soflow2" [(ngModel)]="City4" [(ngModel)]="model2.delivery_city" name="delivery_city" #delivery_city="ngModel" (change)="myFunction1()" required>
+          <option [ngValue]="undefined" disabled selected>Выбор города</option>
+          <option *ngFor="let city2 of cities4" [ngValue]=city2>{{city2.city_name}}</option>
+        </select>
+      </label>
+      <div class="required" *ngIf="a.submitted && !delivery_city.valid">Delivery city is required</div>
+      <label>Адрес доставки
+        <select id="soflow3" [(ngModel)]="Office4" [(ngModel)]="model2.delivery_address" name="delivery_address" #delivery_address="ngModel" required>
+          <option [ngValue]="undefined" disabled selected>Выбор отделения</option>
+          <option *ngFor="let office2 of offices4">{{office2.address}}</option>
+        </select>
+      </label>
+      <div class="required" *ngIf="a.submitted && !delivery_address.valid">Delivery address is required</div>
+    </div>
+    <div class="section"><span>4</span>Данные получателя</div>
+    <div class="form-group" [ngClass]="{'has error': a.submitted && !recipient_first_name.valid && !recipient_last_name.valid && !recipient_phone.valid}">
+      <label>Имя получателя<input type="text" class="form-control" name="recipient_first_name" [(ngModel)]="model2.recipient_first_name" #recipient_first_name="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !recipient_first_name.valid">Recipient first name valid</div>
+      <label>Фамилия получателя<input type="text" class="form-control" name="recipient_last_name" [(ngModel)]="model2.recipient_last_name" #recipient_last_name="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !recipient_last_name.valid">Recipient last name is required</div>
+      <label>Телефон получателя(+380)<input type="number" class="form-control" name="recipient_phone" [(ngModel)]="model2.recipient_phone" #recipient_phone="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !recipient_phone.valid"></div>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading" (click)="create_order()" class="btn btn-primary">Сформировать заказ</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+  </form>
+</div>

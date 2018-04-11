@@ -4,9 +4,10 @@
   box-sizing: border-box;
 }
 
-body {
+ul {
   font-family: 'Nunito', sans-serif;
   color: #384047;
+  left: 44.5%;
 }
 
 form {
@@ -48,6 +49,10 @@ select {
   padding: 6px;
   height: 32px;
   border-radius: 2px;
+}
+
+.help-block {
+  color: red;
 }
 
 button {
