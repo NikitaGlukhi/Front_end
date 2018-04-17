@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AppUserModel } from '../models/user';
 import { AppUserService } from '../services/app.user.service';
 import { AppStatementService } from '../services/app.statement.service';
 import { NavbarService } from '../services/navbar.service';
+import { AppClientModel } from '../models/client';
 
 @Component({
   selector: 'profile',
@@ -11,8 +11,8 @@ import { NavbarService } from '../services/navbar.service';
 })
 
 export class AppProfileComponent implements OnInit {
-  currentUser: AppUserModel;
-  users: AppUserModel[] = [];
+  currentUser: AppClientModel;
+  users: AppClientModel[] = [];
   Orders: any = [];
 
   constructor(private userService: AppUserService, private myOrder: AppStatementService, public nav: NavbarService) {
@@ -22,7 +22,7 @@ export class AppProfileComponent implements OnInit {
   ngOnInit() {
     this.nav.show();
     this.loadAllUsers();
-    this.myOrder.myOrders(this.currentUser.user_id).subscribe(data => {
+    this.myOrder.myOrders(this.currentUser.client_id).subscribe(data => {
       this.Orders = data
     })
   }

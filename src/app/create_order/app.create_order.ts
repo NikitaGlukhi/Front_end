@@ -3,9 +3,9 @@ import { AppService } from '../services/app.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppAlertService } from '../services/app.alert.service';
 import { AppStatementService } from '../services/app.statement.service';
-import { AppUserModel } from '../models/user';
 import { AppUserService } from '../services/app.user.service';
 import { NavbarService } from '../services/navbar.service';
+import { AppClientModel } from '../models/client';
 
 @Component ({
   selector: 'create-order',
@@ -24,7 +24,7 @@ export class AppCreateorderComponent implements OnInit {
   offices1: any = [];
   offices2: any = [];
   users: any = [];
-  current_User: AppUserModel;
+  current_User: AppClientModel;
   condition = true;
   loading = false;
 
@@ -73,7 +73,7 @@ export class AppCreateorderComponent implements OnInit {
   create_statement() {
     console.log('this.current_User', this.current_User);
     this.loading = true;
-    this.orderService.createOrder(this.model1, this.current_User.user_id, this.current_User.first_name, this.current_User.last_name, this.current_User.phone_number)
+    this.orderService.createOrder(this.model1, this.current_User.client_id, this.current_User.client_first_name, this.current_User.client_last_name, this.current_User.client_phone_number)
       .subscribe(data => {
         this.model1 = data;
         alert('Заказ успешно сформирован!');
@@ -87,7 +87,7 @@ export class AppCreateorderComponent implements OnInit {
 
   create_statement1() {
     this.loading = true;
-    this.orderService.createOrder1(this.model1, this.current_User.user_id, this.current_User.first_name, this.current_User.last_name, this.current_User.phone_number)
+    this.orderService.createOrder1(this.model1, this.current_User.client_id, this.current_User.client_first_name, this.current_User.client_last_name, this.current_User.client_phone_number)
       .subscribe(data => {
         this.model1 = data;
         alert('Заказ успешно сформирован!');

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 import { AppUserModel } from '../models/user';
+import { AppClientModel } from '../models/client';
+
 
 @Injectable()
 export class AppUserService {
@@ -10,21 +12,15 @@ export class AppUserService {
 
   getAll() {
     console.log('Got data of users');
-    return this.http.get<AppUserModel[]>('/api/users');
+    return this.http.get<AppClientModel[]>('/api/users');
   }
 
-  getClient() {
-    return this.http.get('/api/client');
+  createUser1(data: {user: AppUserModel, client: AppClientModel}) {
+    return this.http.post('/api/users', data);
   }
 
-  createUser(user: AppUserModel) {
-    console.log(2222, user);
-    return this.http.post('/api/users', user);
-  }
-
-  createModer(user: AppUserModel) {
-    console.log(3333, user);
-    return this.http.post('/api/moder', user);
+  createModer(data: {user1: AppUserModel, client1: AppClientModel}) {
+    return this.http.post('/api/moder', data);
   }
 
   getRecipient() {

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AppUserService } from '../services/app.user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {NavbarService} from "../services/navbar.service";
+import { NavbarService } from '../services/navbar.service';
+import {AppAlertService} from "../services/app.alert.service";
 
 @Component({
   selector: 'moder-creation',
@@ -10,30 +11,31 @@ import {NavbarService} from "../services/navbar.service";
 })
 
 export class AppModerComponent implements OnInit {
-  model2: any = {};
+  model: any = {};
+  model5: any = {};
   loading = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private userService: AppUserService,
+    private alertService: AppAlertService,
     public nav: NavbarService
   ) {}
 
   moderCreate() {
+    console.log(11111111111111111);
     this.loading = true;
-    this.userService.createModer(this.model2).subscribe(data => {
+    this.userService.createModer({user1: this.model, client1: this.model5}).subscribe(data => {
       alert('Модератор успешно зерегистрирован!');
-      this.model2 = data;
+      this.model = data;
+      console.log(data);
       this.router.navigate(['/']);
     },
       error => {
-      alert('При регистрации модератора произошла ошибка');
+      this.alertService.error(error);
       this.loading = false;
       });
-    this.userService.getClient().subscribe(data => {
-      this.model2 = data;
-    })
   }
 
   ngOnInit() {

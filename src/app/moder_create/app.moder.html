@@ -1,40 +1,51 @@
 <div class="form-style-10">
-  <h1>Регистрация модератора</h1>
-  <form name="form" (ngSumbit)="m.form.valid" #m="ngForm" novalidate method="POST">
-    <div class="section"><span>1</span>Имя и фамилия</div>
-    <div class="form-group" [ngClass]="{'has error': m.submitted && !first_name.valid && !last_name.valid}">
-      <label>Имя<input type="text" class="form-control" name="first_name" [(ngModel)]="model2.first_name" #first_name="ngModel" required /></label>
-      <div class="required" *ngIf="m.submitted && !first_name.valid">First name is required</div>
-      <label>Фамилия<input type="text" class="form-control" name="last_name" [(ngModel)]="model2.last_name" #last_name="ngModel" required /></label>
-      <div class="required" *ngIf="m.submitted && !last_name.valid">Last name is required</div>
-    </div>
-    <div class="section"><span>2</span>Никнейм</div>
-    <div class="form-group" [ngClass]="{'has error': m.submitted && !username.valid}">
-      <label>Никнейм<input type="text" class="form-control" name="username" [(ngModel)]="model2.username" #username="ngModel" required /></label>
-      <div class="required" *ngIf="m.submitted && !username.valid">Username is required</div>
-    </div>
-    <div class="section"><span>3</span>Эл. почта и пароль</div>
-    <div class="form-group" [ngClass]="{'has error': m.submitted && !e_mail.valid && !password.valid}">
-      <label>Эл. почта<input type="email" class="form-control" name="e_mail" [(ngModel)]="model2.e_mail" #e_mail="ngModel" required /></label>
-      <div class="required" *ngIf="m.submitted && !e_mail.valid">E-mail is required</div>
-      <label>Пароль<input type="password" class="form-control" name="password" [(ngModel)]="model2.password" #password="ngModel" required /></label>
-      <div class="required" *ngIf="m.submitted && !password.valid">Password is required</div>
-    </div>
-    <div class="section"><span>4</span>Дополнительная информация</div>
-    <div class="form-group" [ngClass]="{'has error': m.submitted && !phone_number.valid && !gender.valid && !age.valid}">
-      <label>Номер телефона(+380)<input type="number" class="form-control" name="phone_number" [(ngModel)]="model2.phone_number" #phone_number="ngModel" required /></label>
-      <div class="required" *ngIf="m.submitted && !phone_number.valid"></div>
-      <label>Пол
-        <select id="gender" type="text" class="form-control" name="gender" [(ngModel)]="model2.gender" #gender="ngModel" required>
+  <form name="form" (ngSumbit)="f.form.valid" #f="ngForm" novalidate method="POST">
+    <h1>Регистрация модератора</h1>
+    <fieldset>
+      <legend><span class="number">1</span>Контактные данные</legend>
+      <div class="form-group" [ngClass]="{'has error': f.submitted && !client_first_name.valid}">
+        <input id="first_name" type="text" class="form-control" name="first_name" [(ngModel)]="model5.client_first_name" #client_first_name="ngModel" placeholder="First Name" autocomplete="off" required />
+        <div *ngIf="f.submitted && !client_first_name.valid" class="help-block">First Name is required</div>
+      </div>
+      <div class="form-group" [ngClass]="{'has error': f.submitted && !client_last_name.valid}">
+        <input id="last_name" type="text" class="form-control" name="last_name" [(ngModel)]="model5.client_last_name" #client_last_name="ngModel" placeholder="Last Name" autocomplete="off" required />
+        <div *ngIf="f.submitted && !client_last_name.valid" class="help-block">Last Name id required</div>
+      </div>
+      <div class="form-group" [ngClass]="{'has error': f.submitted && !client_username.valid}">
+        <input id="username" type="text" class="form-control" name="username" [(ngModel)]="model5.client_username" #client_username="ngModel" placeholder="Username" autocomplete="off" required />
+        <div *ngIf="f.submitted && !client_username.valid" class="help-block">Username is required</div>
+      </div>
+      <div class="from-group" [ngClass]="{'has error': f.submitted && !client_phone_number.valid}">
+        <input id="phone_number" type="number" class="form-control" name="phone_number" [(ngModel)]="model5.client_phone_number" #client_phone_number="ngModel" placeholder="Phone Number (+380)" autocomplete="off" required />
+        <div *ngIf="f.submitted && !client_phone_number">Phone number is required</div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend><span class="number">2</span>Эл.почта, пароль</legend>
+      <div class="form-group" [ngClass]="{'has error': f.submitted && !e_mail.valid}">
+        <input id="e_mail" type="email" class="form-control" name="e_mail" [(ngModel)]="model.e_mail" #e_mail="ngModel" placeholder="E-mail" autocomplete="off" required />
+        <div *ngIf="f.submitted && !e_mail.valid" class="help-block">E-mail is required</div>
+      </div>
+      <div class="form-group" [ngClass]="{'has error': f.submitted && !password.valid}">
+        <input id="password" type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" placeholder="Password" autocomplete="off" required />
+        <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend><span class="number">3</span>Прочая информация</legend>
+      <div class="form-group" [ngClass]="{'has error': f.submitted && !client_gender.valid}">
+        <select id="gender" type="text" class="form-control" name="gender" [(ngModel)]="model5.client_gender" #client_gender="ngModel" required>
           <option [ngValue]="undefined" disabled selected>Select moder's gender</option>
           <option>Male</option>
           <option>Female</option>
         </select>
-      </label>
-      <div class="required" *ngIf="m.submitted && !gender.valid">Gender is required</div>
-      <label>Возраст<input type="number" class="form-control" name="age" [(ngModel)]="model2.age" #age="ngModel" required /></label>
-      <div class="required" *ngIf="m.submitted && !age.valid">Age is valid</div>
-    </div>
+        <div *ngIf="f.submitted && !client_gender.valid" class="help-block">Gender is required</div>
+      </div>
+      <div class="form-group" [ngClass]="{'has error': f.submitted && !client_age.valid}">
+        <input id="age" type="number" class="form-control" name="age" [(ngModel)]="model5.client_age" #client_age="ngModel" placeholder="Age" autocomplete="off" required />
+        <div *ngIf="f.submitted && !client_age.valid" class="help-block">Age is required</div>
+      </div>
+    </fieldset>
     <div class="form-group">
       <button [disabled]="loading" (click)="moderCreate()" class="btn btn-primary">Зарегистрировать модератора</button>
       <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />

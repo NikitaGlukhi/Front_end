@@ -22,22 +22,22 @@ export class AppStatementService {
       'Something bad happened; please try again later.');
   };
 
-  createOrder(order: Statement, user_id, first_name, last_name, phone_number) {
-    console.log(user_id);
+  createOrder(order: Statement, client_id, first_name, last_name, phone_number) {
+    console.log(client_id);
     return this.http.post('api/statements', {
       order: order,
-      user_id: user_id,
+      client_id: client_id,
       sender_fn: first_name,
       sender_ln: last_name,
       sender_ph: phone_number
     });
   }
 
-  createOrder1(order1: Statement, user_id, first_name, last_name, phone_number) {
-    console.log(user_id);
+  createOrder1(order1: Statement, client_id, first_name, last_name, phone_number) {
+    console.log(client_id);
     return this.http.post('api/statements1', {
       order1: order1,
-      user_id: user_id,
+      client_id: client_id,
       sender_fn1: first_name,
       sender_ln1: last_name,
       sender_ph1: phone_number
@@ -51,11 +51,17 @@ export class AppStatementService {
     });
   }
 
-  addClient(order2: Statement) {
+  addSender(order2: Statement) {
     console.log();
-    return this.http.post('api/clients', {
+    return this.http.post('api/sender', {
       client: order2,
     });
+  }
+
+  addRecipient(order2: Statement) {
+    return this.http.post('api/recipient', {
+      client1: order2
+    })
   }
 
   getOrderData() {

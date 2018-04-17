@@ -9,14 +9,14 @@ import { NavbarService } from '../services/navbar.service';
 })
 
 export class AppUsersComponent implements OnInit {
-users: any = [];
+clients: any = [];
 
 constructor(private userService: AppUserService, public nav: NavbarService) { }
   ngOnInit() {
   this.nav.show();
     console.log('Got data of users');
-    this.userService.getAll().subscribe(users => {
-      this.users = users
+    this.userService.getAll().subscribe(clients => {
+      this.clients = clients
     })
   }
 }

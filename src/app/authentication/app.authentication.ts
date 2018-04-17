@@ -13,6 +13,7 @@ import { NavbarService } from '../services/navbar.service';
 
 export class AppAuthenticationComponent implements OnInit {
   model: any = {};
+  model5: any = {};
   loading = false;
   returnUrl: string;
 
@@ -31,20 +32,16 @@ export class AppAuthenticationComponent implements OnInit {
 
   register() {
     this.loading = true;
-    this.userService.createUser(this.model)
-      .subscribe(data => {
-          this.alertService.success('Registration successful', true);
-          this.model = data;
-          this.router.navigate(['/'])
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
-      );
-    this.userService.getClient().subscribe(data => {
+    this.userService.createUser1({user: this.model, client: this.model5}).subscribe(data => {
+      console.log(data);
+      this.alertService.success('Registration successful', true);
       this.model = data;
-    })
+      this.router.navigate(['/']);
+    },
+      error => {
+      this.alertService.error(error);
+      this.loading = false
+      })
   }
 
   ngOnInit() {

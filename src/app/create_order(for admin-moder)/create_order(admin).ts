@@ -64,7 +64,10 @@ export class AppCreateOrderAdminComponent {
       this.alertService.error(error);
       this.loading = false;
       });
-    this.orderService.addClient(this.model2).subscribe(data => {
+    this.orderService.addSender(this.model2).subscribe(data => {
+      this.model2 = data;
+    });
+    this.orderService.addRecipient(this.model2).subscribe(data => {
       this.model2 = data;
     })
   }

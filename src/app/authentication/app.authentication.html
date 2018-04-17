@@ -14,21 +14,21 @@
     <h1>Регистрация</h1>
     <fieldset>
       <legend><span class="number">1</span>Ваши контактные данные</legend>
-    <div class="form-group" [ngClass]="{'has error': f.submitted && !username.valid}">
-      <input id="first_name" type="text" class="form-control" name="first_name" [(ngModel)]="model.first_name" #first_name="ngModel" placeholder="First Name" autocomplete="off" required />
-      <div *ngIf="f.submitted && !first_name.valid" class="help-block">First Name is required</div>
+    <div class="form-group" [ngClass]="{'has error': f.submitted && !client_first_name.valid}">
+      <input id="first_name" type="text" class="form-control" name="first_name" [(ngModel)]="model5.client_first_name" #client_first_name="ngModel" placeholder="First Name" autocomplete="off" required />
+      <div *ngIf="f.submitted && !client_first_name.valid" class="help-block">First Name is required</div>
     </div>
-    <div class="form-group" [ngClass]="{'has error': f.submitted && !username.valid}">
-      <input id="last_name" type="text" class="form-control" name="last_name" [(ngModel)]="model.last_name" #last_name="ngModel" placeholder="Last Name" autocomplete="off" required />
-      <div *ngIf="f.submitted && !last_name.valid" class="help-block">Last Name id required</div>
+    <div class="form-group" [ngClass]="{'has error': f.submitted && !client_last_name.valid}">
+      <input id="last_name" type="text" class="form-control" name="last_name" [(ngModel)]="model5.client_last_name" #client_last_name="ngModel" placeholder="Last Name" autocomplete="off" required />
+      <div *ngIf="f.submitted && !client_last_name.valid" class="help-block">Last Name id required</div>
     </div>
-    <div class="form-group" [ngClass]="{'has error': f.submitted && !username.valid}">
-      <input id="username" type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" placeholder="Username" autocomplete="off" required />
-      <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
+    <div class="form-group" [ngClass]="{'has error': f.submitted && !client_username.valid}">
+      <input id="username" type="text" class="form-control" name="username" [(ngModel)]="model5.client_username" #client_username="ngModel" placeholder="Username" autocomplete="off" required />
+      <div *ngIf="f.submitted && !client_username.valid" class="help-block">Username is required</div>
     </div>
-    <div class="from-group" [ngClass]="{'has error': f.submitted && !phone_number}">
-      <input id="phone_number" type="number" class="form-control" name="phone_number" [(ngModel)]="model.phone_number" #phone_number="ngModel" placeholder="Phone Number (+380)" autocomplete="off" required />
-      <div *ngIf="f.submitted && !phone_number">Phone number is required</div>
+    <div class="from-group" [ngClass]="{'has error': f.submitted && !client_phone_number.valid}">
+      <input id="phone_number" type="number" class="form-control" name="phone_number" [(ngModel)]="model5.client_phone_number" #client_phone_number="ngModel" placeholder="Phone Number (+380)" autocomplete="off" required />
+      <div *ngIf="f.submitted && !client_phone_number">Phone number is required</div>
     </div>
     </fieldset>
     <fieldset>
@@ -44,17 +44,17 @@
     </fieldset>
     <fieldset>
       <legend><span class="number">3</span>Прочая информация</legend>
-    <div class="form-group" [ngClass]="{'has error': f.submitted && !gender.valid}">
-      <select id="gender" type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required>
+    <div class="form-group" [ngClass]="{'has error': f.submitted && !client_gender.valid}">
+      <select id="gender" type="text" class="form-control" name="gender" [(ngModel)]="model5.client_gender" #client_gender="ngModel" required>
         <option [ngValue]="undefined" disabled selected>Select your gender</option>
         <option>Male</option>
         <option>Female</option>
       </select>
-      <div *ngIf="f.submitted && !gender.valid" class="help-block">Gender is required</div>
+      <div *ngIf="f.submitted && !client_gender.valid" class="help-block">Gender is required</div>
     </div>
-    <div class="form-group" [ngClass]="{'has error': f.submitted && !age.valid}">
-      <input id="age" type="number" class="form-control" name="age" [(ngModel)]="model.age" #age="ngModel" placeholder="Age" autocomplete="off" required />
-      <div *ngIf="f.submitted && !age.valid" class="help-block">Age is required</div>
+    <div class="form-group" [ngClass]="{'has error': f.submitted && !client_age.valid}">
+      <input id="age" type="number" class="form-control" name="age" [(ngModel)]="model5.client_age" #client_age="ngModel" placeholder="Age" autocomplete="off" required />
+      <div *ngIf="f.submitted && !client_age.valid" class="help-block">Age is required</div>
     </div>
     </fieldset>
     <div class="form-group">

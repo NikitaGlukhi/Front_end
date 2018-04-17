@@ -7,11 +7,11 @@
     <th>Статус</th>
     <th>Зарегистрирован</th>
   </tr>
-  <tr *ngFor="let user of users" style="text-align: center">
-    <td>{{user.last_name}}</td>
-    <td>{{user.first_name}}</td>
-    <td>{{user.username}}</td>
-    <td>{{user.status}}</td>
-    <td>{{user.createdAt}}</td>
+  <tr *ngFor="let client of clients" style="text-align: center">
+    <td>{{client.client_last_name}}</td>
+    <td>{{client.client_first_name}}</td>
+    <td>{{client.client_username}}</td>
+    <td>{{client.client_status}}</td>
+    <td>{{client.createdAt}}</td>
   </tr>
 </table>
