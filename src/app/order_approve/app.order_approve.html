@@ -1,7 +1,7 @@
 <div class="buttons" *ngFor="let order of orders">
     <div class="rounded-list">
       <li><a>Id заказа: {{order.statement_id}}</a></li>
-      <li><a>Отправитель(user_id): {{order.user_id}}</a></li>
+      <li><a>Отправитель(client_id): {{order.client_id}}</a></li>
       <li><a>Название товара: {{order.product_name}}</a></li>
       <li><a>Количество: {{order.count}}</a></li>
       <li><a>Статус: {{order.status}}</a></li>

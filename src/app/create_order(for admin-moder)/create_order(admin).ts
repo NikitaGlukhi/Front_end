@@ -12,13 +12,13 @@ import { AppService } from '../services/app.service';
 
 export class AppCreateOrderAdminComponent {
   model2: any = {};
+  model7: any = {};
+  model10: any = {};
   City3: any;
   cities3: any = [];
-  Office3: any;
   offices3: any = [];
   City4: any;
   cities4: any = [];
-  Office4: any;
   offices4: any = [];
   loading = false;
 
@@ -55,8 +55,8 @@ export class AppCreateOrderAdminComponent {
 
   create_order() {
     this.loading = true;
-    this.orderService.createOrder2(this.model2).subscribe(data => {
-      this.model2 = data;
+    this.orderService.createOrder2({sender: this.model7, recipient: this.model10, order2: this.model2}).subscribe(data => {
+      this.model7 = data;
       alert('Заказ сформирован!');
       this.router.navigate(['/']);
     },
@@ -64,11 +64,5 @@ export class AppCreateOrderAdminComponent {
       this.alertService.error(error);
       this.loading = false;
       });
-    this.orderService.addSender(this.model2).subscribe(data => {
-      this.model2 = data;
-    });
-    this.orderService.addRecipient(this.model2).subscribe(data => {
-      this.model2 = data;
-    })
   }
 }

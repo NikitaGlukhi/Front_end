@@ -3,11 +3,11 @@
   <form name="form" (ngSubmit)="a.form.valid" #a="ngForm" novalidate method="POST">
     <div class="section"><span>1</span>Данные клиента</div>
     <div class="form-group" [ngClass]="{'has error': a.submitted && !client_first_name.valid && !client_last_name.valid && !client_phone.valid}">
-      <label>Имя клиента<input type="text" class="form-control" name="client_first_name" [(ngModel)]="model2.client_first_name" #client_first_name="ngModel" autocomplete="off" required /></label>
+      <label>Имя клиента<input type="text" class="form-control" name="client_first_name" [(ngModel)]="model7.client_first_name" #client_first_name="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="a.submitted && !client_first_name.valid">Client name is required</div>
-      <label>Фамилия клиента<input type="text" class="form-control" name="client_last_name" [(ngModel)]="model2.client_last_name" #client_last_name="ngModel" autocomplete="off" required /></label>
+      <label>Фамилия клиента<input type="text" class="form-control" name="client_last_name" [(ngModel)]="model7.client_last_name" #client_last_name="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="a.submitted && !client_last_name">Client last name is required</div>
-      <label>Тел. номер<input type="text" class="form-control" name="client_phone" [(ngModel)]="model2.client_phone" #client_phone="ngModel" autocomplete="off" required /></label>
+      <label>Тел. номер<input type="text" class="form-control" name="client_phone" [(ngModel)]="model7.client_phone_number" #client_phone="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="a.submitted && !client_phone.valid">Phone number is required</div>
     </div>
     <div class="section"><span>2</span>Данные о товаре</div>
@@ -41,9 +41,9 @@
       </label>
       <div class="required" *ngIf="a.submitted && !shipping_city.valid">Shipping city is required</div>
       <label>Адрес отправления
-        <select id="soflow1" [(ngModel)]="Office3" [(ngModel)]="model2.shipping_address" name="shipping_address" #shipping_address="ngModel" required>
+        <select id="soflow1" [(ngModel)]="model2.shipping_address" name="shipping_address" #shipping_address="ngModel" required>
           <option [ngValue]="undefined" disabled selected>Выбор отделения</option>
-          <option *ngFor="let office1 of offices3">{{ office1.address }}</option>
+          <option *ngFor="let office1 of offices3" [ngValue]="office1">{{ office1.address }}</option>
         </select>
       </label>
       <div class="required" *ngIf="a.submitted && !shipping_address.valid">Shipping address is required</div>
@@ -55,21 +55,21 @@
       </label>
       <div class="required" *ngIf="a.submitted && !delivery_city.valid">Delivery city is required</div>
       <label>Адрес доставки
-        <select id="soflow3" [(ngModel)]="Office4" [(ngModel)]="model2.delivery_address" name="delivery_address" #delivery_address="ngModel" required>
+        <select id="soflow3" [(ngModel)]="model2.delivery_address" name="delivery_address" #delivery_address="ngModel" required>
           <option [ngValue]="undefined" disabled selected>Выбор отделения</option>
-          <option *ngFor="let office2 of offices4">{{office2.address}}</option>
+          <option *ngFor="let office2 of offices4" [ngValue]="office2">{{office2.address}}</option>
         </select>
       </label>
       <div class="required" *ngIf="a.submitted && !delivery_address.valid">Delivery address is required</div>
     </div>
     <div class="section"><span>4</span>Данные получателя</div>
-    <div class="form-group" [ngClass]="{'has error': a.submitted && !recipient_first_name.valid && !recipient_last_name.valid && !recipient_phone.valid}">
-      <label>Имя получателя<input type="text" class="form-control" name="recipient_first_name" [(ngModel)]="model2.recipient_first_name" #recipient_first_name="ngModel" autocomplete="off" required /></label>
-      <div class="required" *ngIf="a.submitted && !recipient_first_name.valid">Recipient first name valid</div>
-      <label>Фамилия получателя<input type="text" class="form-control" name="recipient_last_name" [(ngModel)]="model2.recipient_last_name" #recipient_last_name="ngModel" autocomplete="off" required /></label>
-      <div class="required" *ngIf="a.submitted && !recipient_last_name.valid">Recipient last name is required</div>
-      <label>Телефон получателя(+380)<input type="number" class="form-control" name="recipient_phone" [(ngModel)]="model2.recipient_phone" #recipient_phone="ngModel" autocomplete="off" required /></label>
-      <div class="required" *ngIf="a.submitted && !recipient_phone.valid"></div>
+    <div class="form-group" [ngClass]="{'has error': a.submitted && !client_first_name.valid && !client_last_name.valid && !recipient_phone.valid}">
+      <label>Имя получателя<input type="text" class="form-control" name="recipient_first_name" [(ngModel)]="model10.client_first_name" #client_first_name="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !client_first_name.valid">Recipient first name valid</div>
+      <label>Фамилия получателя<input type="text" class="form-control" name="recipient_last_name" [(ngModel)]="model10.client_last_name" #client_last_name="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !client_last_name.valid">Recipient last name is required</div>
+      <label>Телефон получателя(+380)<input type="number" class="form-control" name="recipient_phone" [(ngModel)]="model10.client_phone_number" #client_phone_number="ngModel" autocomplete="off" required /></label>
+      <div class="required" *ngIf="a.submitted && !client_phone_number.valid"></div>
     </div>
     <div class="form-group">
       <button [disabled]="loading" (click)="create_order()" class="btn btn-primary">Сформировать заказ</button>

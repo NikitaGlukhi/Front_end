@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import { Statement } from '../models/statement';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
+import { AppClientModel } from '../models/client';
 
 @Injectable()
 export class AppStatementService {
@@ -22,46 +23,25 @@ export class AppStatementService {
       'Something bad happened; please try again later.');
   };
 
-  createOrder(order: Statement, client_id, first_name, last_name, phone_number) {
+  createOrder(order: Statement, client_id) {
     console.log(client_id);
     return this.http.post('api/statements', {
       order: order,
-      client_id: client_id,
-      sender_fn: first_name,
-      sender_ln: last_name,
-      sender_ph: phone_number
+      client_id: client_id
     });
   }
 
-  createOrder1(order1: Statement, client_id, first_name, last_name, phone_number) {
-    console.log(client_id);
+  createOrder1(data: {recipient: AppClientModel, order1: Statement}, client_id) {
+    console.log(data, client_id);
     return this.http.post('api/statements1', {
-      order1: order1,
-      client_id: client_id,
-      sender_fn1: first_name,
-      sender_ln1: last_name,
-      sender_ph1: phone_number
+      data: data,
+      client_id: client_id
     });
   }
 
-  createOrder2(order2: Statement) {
+  createOrder2(data: {sender: AppClientModel, recipient: AppClientModel, order2: Statement}) {
     console.log();
-    return this.http.post('api/statements2', {
-      order2: order2,
-    });
-  }
-
-  addSender(order2: Statement) {
-    console.log();
-    return this.http.post('api/sender', {
-      client: order2,
-    });
-  }
-
-  addRecipient(order2: Statement) {
-    return this.http.post('api/recipient', {
-      client1: order2
-    })
+    return this.http.post('api/statements2', data);
   }
 
   getOrderData() {

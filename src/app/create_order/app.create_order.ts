@@ -15,6 +15,7 @@ import { AppClientModel } from '../models/client';
 
 export class AppCreateorderComponent implements OnInit {
   model1: any = {};
+  model8: any = {};
   City1: any;
   City2: any;
   Office2: any;
@@ -23,7 +24,7 @@ export class AppCreateorderComponent implements OnInit {
   cities2: any = [];
   offices1: any = [];
   offices2: any = [];
-  users: any = [];
+  clients: any = [];
   current_User: AppClientModel;
   condition = true;
   loading = false;
@@ -53,7 +54,7 @@ export class AppCreateorderComponent implements OnInit {
       this.cities2 = data;
     });
     this.user.getRecipient().subscribe(data => {
-      this.users = data;
+      this.clients = data;
     });
     this.current_User = JSON.parse(localStorage.getItem('currentUser'));
   };
@@ -73,7 +74,7 @@ export class AppCreateorderComponent implements OnInit {
   create_statement() {
     console.log('this.current_User', this.current_User);
     this.loading = true;
-    this.orderService.createOrder(this.model1, this.current_User.client_id, this.current_User.client_first_name, this.current_User.client_last_name, this.current_User.client_phone_number)
+    this.orderService.createOrder(this.model1, this.current_User.client_id)
       .subscribe(data => {
         this.model1 = data;
         alert('Заказ успешно сформирован!');
@@ -87,7 +88,7 @@ export class AppCreateorderComponent implements OnInit {
 
   create_statement1() {
     this.loading = true;
-    this.orderService.createOrder1(this.model1, this.current_User.client_id, this.current_User.client_first_name, this.current_User.client_last_name, this.current_User.client_phone_number)
+    this.orderService.createOrder1({recipient: this.model8, order1: this.model1}, this.current_User.client_id)
       .subscribe(data => {
         this.model1 = data;
         alert('Заказ успешно сформирован!');

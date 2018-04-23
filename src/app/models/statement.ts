@@ -12,7 +12,9 @@ export class Statement {
   recipient_last_name: string;
   recipient_phone: number;
   shipping_city: string;
+  shipping_office_id: number;
   shipping_address: string;
   delivery_city: string;
   delivery_address: string;
+  delivery_office_id: number;
 }
