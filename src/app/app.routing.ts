@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { AppDriversComponent } from './drivers/app.drivers';
 import { AppHomepageComponent } from './homepage/app.homepage';
 import { AppCreateorderComponent } from './create_order/app.create_order';
 import { AppOrderApproveComponent } from './order_approve/app.order_approve';
@@ -20,7 +19,6 @@ export const route: Routes = [
   { path: 'homepage', component: AppHomepageComponent },
   { path: 'authentication', component: AppAuthenticationComponent },
   { path: 'create-order', component: AppCreateorderComponent, canActivate: [AuthGuard] },
-  { path: 'drivers', component: AppDriversComponent, canActivate: [AuthAdminGuard] },
   { path: 'order-approve', component: AppOrderApproveComponent, canActivate: [AuthAdminModerGuard] },
   { path: 'users', component: AppUsersComponent, canActivate: [AuthAdminGuard] },
   { path: 'moder-creation', component: AppModerComponent, canActivate: [AuthAdminGuard] },

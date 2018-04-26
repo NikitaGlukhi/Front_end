@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component/app.component';
 import { RouterModule } from '@angular/router';
 import { route } from './app.routing';
-import { AppDriversComponent } from './drivers/app.drivers';
 import { AppHomepageComponent } from './homepage/app.homepage';
 import { AppCreateorderComponent } from './create_order/app.create_order';
 import { AppOrderApproveComponent } from './order_approve/app.order_approve';
@@ -32,7 +31,6 @@ import { AppCreateOrderAdminComponent } from './create_order(for admin-moder)/cr
   declarations: [
     AppComponent,
     AppHomepageComponent,
-    AppDriversComponent,
     AppCreateorderComponent,
     AppOrderApproveComponent,
     AppAlertComponent,
