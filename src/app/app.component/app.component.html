@@ -1,76 +1,92 @@
-<ul class="block-menu" *ngIf="nav.visible">
-  <img src="http://vignette2.wikia.nocookie.net/epicrapbattlesofhistory/images/c/cb/Internet-troll-face-explorer.png/revision/latest?cb=20140216160819">
-  <h1>Post office</h1>
-  <li><a routerLink="homepage" routerLinkActive="active" class="three-d">
-    Домашняя страница
-    <span aria-hidden="true" class="three-d-box">
-			<span class="front">Домашняя страница</span>
-			<span class="back">Домашняя страница</span>
-		</span>
-  </a></li>
-  <li><a routerLink="create-order" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
-    Сформитровать заказ
-    <span aria-hidden="true" class="three-d-box">
-			<span class="front">Сформитровать заказ</span>
-			<span class="back">Сформитровать заказ</span>
-		</span>
-  </a></li>
-  <li *ngIf="currentUser?.client_status == 'admin' || currentUser?.client_status === 'moderator'"><a routerLink="order-approve" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
-    Обработка заказов
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Обработка заказов</span>
-      <span class="back">Обработка заказов</span>
-    </span>
-  </a></li>
-  <li *ngIf="currentUser?.client_status === 'admin'"><a routerLink="users" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
-    Пользователи
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Пользователи</span>
-      <span class="back">Пользователи</span>
-    </span>
-  </a></li>
-  <li *ngIf="currentUser?.client_status === 'wwwwwwwww'"><a routerLink="profile" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
-    Мой профиль
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Мой профиль</span>
-      <span class="back">Мой профиль</span>
-    </span>
-  </a></li>
-  <li *ngIf="currentUser?.client_status === 'admin'"><a routerLink="drivers" routerLinkActive="activate" *ngIf="auth.isAuthentcated()" class="three-d">
-    Список водителей
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Список водителей</span>
-      <span class="back">Список водителей</span>
-    </span>
-  </a></li>
-  <li *ngIf="currentUser?.client_status === 'admin'"><a routerLink="moder-creation" routerLinkActive="active" *ngIf="auth.isAuthentcated()" class="three-d">
-    Зарегистрировать модератора
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Зарегистрировать модератора</span>
-      <span class="back">Зарегистрировать модератора</span>
-    </span>
-  </a></li>
-  <li *ngIf="currentUser?.client_status == 'admin' || currentUser?.client_status === 'moderator'"><a routerLink="admin-order-creation" *ngIf="auth.isAuthentcated()" class="three-d">
-    Сформировать заказ клиента
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Сформировать заказ клиента</span>
-      <span class="back">Сформировать заказ клиента</span>
-    </span>
-  </a></li>
-  <li><a routerLink="authentication" routerLinkActive="active" *ngIf="!auth.isAuthentcated()" class="three-d">
-    Log In
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Log In</span>
-      <span class="back">Log In</span>
-    </span>
-  </a></li>
-  <li><a aria-hidden="true" *ngIf="auth.isAuthentcated()" (click)="auth.logout()" class="three-d">
-    Log Out
-    <span aria-hidden="true" class="three-d-box">
-      <span class="front">Log Out</span>
-      <span class="back">Log Out</span>
-    </span>
-  </a></li>
-</ul>
+<html>
+<head>
 
+</head>
+<body><div class="area"></div><nav class="main-menu" *ngIf="this.nav.visible">
+  <span class="nav-image"><img src="http://vignette2.wikia.nocookie.net/epicrapbattlesofhistory/images/c/cb/Internet-troll-face-explorer.png/revision/latest?cb=20140216160819"></span>
+  <ul>
+    <li>
+      <a routerLink="homepage">
+        <i class="fa fa-home"></i>
+        <span class="nav-text">
+          Домашняя страница
+        </span>
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <a *ngIf="auth.isAuthentcated()" routerLink="create-order">
+        <i class="fa fa-cart-plus"></i>
+        <span class="nav-text">
+          Сформировать заказ
+        </span>
+      </a>
+
+    </li>
+    <li *ngIf="currentUser?.client_status == 'admin' || currentUser?.client_status === 'moderator'" class="has-subnav">
+      <a *ngIf="auth.isAuthentcated()" routerLink="order-approve">
+        <i class="fa fa-check"></i>
+        <span class="nav-text">
+          Обработка заказов
+        </span>
+      </a>
+
+    </li>
+    <li class="has-subnav">
+      <a *ngIf="auth.isAuthentcated()" routerLink="profile">
+        <i class="fa fa-id-card"></i>
+        <span class="nav-text">
+          Мой профиль
+        </span>
+      </a>
+    </li>
+    <li *ngIf="currentUser?.client_status == 'admin'" class="has-subnav">
+      <a *ngIf="auth.isAuthentcated()" routerLink="users">
+        <i class="fa fa-users"></i>
+        <span class="nav-text">
+          Пользователи
+        </span>
+      </a>
+
+    </li>
+    <li *ngIf="currentUser?.client_status == 'admin'" class="has-subnav">
+      <a *ngIf="auth.isAuthentcated()" routerLink="moder-creation">
+        <i class="fa fa-user-plus"></i>
+        <span class="nav-text">
+          Регистрация модератора
+        </span>
+      </a>
+    </li>
+    <li *ngIf="currentUser?.client_status == 'admin' || currentUser?.client_status === 'moderator'" class="has-subnav">
+      <a *ngIf="auth.isAuthentcated()" routerLink="admin-order-creation">
+        <i class="fa fa-pencil-square"></i>
+        <span class="nav-text">
+          Сформировать заказ клиента
+        </span>
+      </a>
+    </li>
+  </ul>
+  <ul class="login">
+    <li>
+      <a *ngIf="!auth.isAuthentcated()" routerLink="authentication">
+        <i class="fa fa-sign-in"></i>
+        <span class="nav-text">
+            Log In
+          </span>
+      </a>
+    </li>
+  </ul>
+  <ul class="logout">
+    <li>
+      <a *ngIf="auth.isAuthentcated()" (click)="auth.logout()">
+        <i class="fa fa-sign-out"></i>
+        <span class="nav-text">
+          Logout
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</body>
+</html>
 <router-outlet></router-outlet>

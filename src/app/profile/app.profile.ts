@@ -21,6 +21,7 @@ export class AppProfileComponent implements OnInit {
 
   ngOnInit() {
     this.nav.show();
+    this.nav.doSomethingElseUseful();
     this.loadAllUsers();
     this.myOrder.myOrders(this.currentUser.client_id).subscribe(data => {
       this.Orders = data

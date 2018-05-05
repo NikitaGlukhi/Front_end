@@ -28,7 +28,7 @@ export class AppAuthenticationComponent implements OnInit {
               private userService: AppUserService,
               private alertService: AppAlertService,
               private authService: AppAuthService,
-              public nav: NavbarService) {}
+              private nav: NavbarService) {}
 
   register() {
     this.loading = true;

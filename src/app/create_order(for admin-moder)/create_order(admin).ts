@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppAlertService } from '../services/app.alert.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppStatementService } from '../services/app.statement.service';
 import { AppService } from '../services/app.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'admin-order-creation',
@@ -10,10 +11,11 @@ import { AppService } from '../services/app.service';
   styleUrls: ['./create_order(admin).css']
 })
 
-export class AppCreateOrderAdminComponent {
+export class AppCreateOrderAdminComponent implements OnInit {
   model2: any = {};
   model7: any = {};
   model10: any = {};
+  model12: any = {};
   City3: any;
   cities3: any = [];
   offices3: any = [];
@@ -29,7 +31,8 @@ export class AppCreateOrderAdminComponent {
               private route: ActivatedRoute,
               private router: Router,
               private alertService: AppAlertService,
-              private orderService: AppStatementService
+              private orderService: AppStatementService,
+              public nav: NavbarService
   ) {
     this.shippingCity.getShippingCity().subscribe(data => {
       console.log('Got data of shipping_sity');
@@ -55,7 +58,7 @@ export class AppCreateOrderAdminComponent {
 
   create_order() {
     this.loading = true;
-    this.orderService.createOrder2({sender: this.model7, recipient: this.model10, order2: this.model2}).subscribe(data => {
+    this.orderService.createOrder2({sender: this.model7, recipient: this.model10, product2: this.model12, order2: this.model2}).subscribe(data => {
       this.model7 = data;
       alert('Заказ сформирован!');
       this.router.navigate(['/']);
@@ -64,5 +67,10 @@ export class AppCreateOrderAdminComponent {
       this.alertService.error(error);
       this.loading = false;
       });
+  }
+
+  ngOnInit() {
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
   }
 }

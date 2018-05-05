@@ -40,5 +40,6 @@ export class AppModerComponent implements OnInit {
 
   ngOnInit() {
     this.nav.show();
+    this.nav.doSomethingElseUseful();
   }
 }

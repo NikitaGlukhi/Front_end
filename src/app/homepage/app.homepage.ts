@@ -28,6 +28,7 @@ export class AppHomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nav.show()
+    this.nav.show();
+    this.nav.doSomethingElseUseful();
   }
 }

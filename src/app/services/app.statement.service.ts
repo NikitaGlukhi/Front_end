@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
 import { Statement } from '../models/statement';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 import { AppClientModel } from '../models/client';
+import { AppProductModel } from '../models/product';
 
 @Injectable()
 export class AppStatementService {
@@ -23,15 +24,15 @@ export class AppStatementService {
       'Something bad happened; please try again later.');
   };
 
-  createOrder(order: Statement, client_id) {
+  createOrder(data: {product: AppProductModel, order: Statement}, client_id) {
     console.log(client_id);
     return this.http.post('api/statements', {
-      order: order,
+      data: data,
       client_id: client_id
     });
   }
 
-  createOrder1(data: {recipient: AppClientModel, order1: Statement}, client_id) {
+  createOrder1(data: {recipient: AppClientModel, product1: AppProductModel, order1: Statement}, client_id) {
     console.log(data, client_id);
     return this.http.post('api/statements1', {
       data: data,
@@ -39,14 +40,14 @@ export class AppStatementService {
     });
   }
 
-  createOrder2(data: {sender: AppClientModel, recipient: AppClientModel, order2: Statement}) {
+  createOrder2(data: {sender: AppClientModel, recipient: AppClientModel, product2: AppProductModel, order2: Statement}) {
     console.log();
     return this.http.post('api/statements2', data);
   }
 
   getOrderData() {
     console.log('Got data of statements');
-    return this.http.get('api/statements')
+    return this.http.get('api/statement')
       .pipe(
         catchError(this.handleError)
       );

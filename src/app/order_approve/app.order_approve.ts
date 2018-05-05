@@ -16,6 +16,7 @@ export class AppOrderApproveComponent implements OnInit {
 
   ngOnInit() {
     this.nav.show();
+    this.nav.doSomethingElseUseful();
     this.order.getOrderData().subscribe(data => {
       this.orders = data;
       console.log(this.orders);

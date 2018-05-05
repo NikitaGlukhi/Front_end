@@ -12,14 +12,14 @@
     </div>
     <div class="section"><span>2</span>Данные о товаре</div>
     <div class="form-group" [ngClass]="{'has error': a.submitted && !product_name.valid && !weight.valid && !storage_conditions.valid && !count.valid}">
-      <label>Название товара<input type="text" class="from-control" name="product_name" [(ngModel)]="model2.product_name" #product_name="ngModel" autocomplete="off" required /></label>
+      <label>Название товара<input type="text" class="from-control" name="product_name" [(ngModel)]="model12.product_name" #product_name="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="a.submitted && !product_name.valid">Product name is required</div>
-      <label>Количество<input type="number" class="form-control" name="count" [(ngModel)]="model2.count" #count="ngModel" autocomplete="off" required /></label>
+      <label>Количество<input type="number" class="form-control" name="count" [(ngModel)]="model12.count" #count="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="a.submitted && !count.valid">Count is required</div>
-      <label>Вес товара<input type="number" class="form-control" name="weight" [(ngModel)]="model2.weight" #weight="ngModel" autocomplete="off" required /></label>
+      <label>Вес товара<input type="number" class="form-control" name="weight" [(ngModel)]="model12.weight" #weight="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="a.submitted && !weight.valid">Weight is required</div>
       <label>Условия хранения
-        <select type="text" class="form-control" name="storage_conditions" [(ngModel)]="model2.storage_conditions" #storage_conditions="ngModel" required>
+        <select type="text" class="form-control" name="storage_conditions" [(ngModel)]="model12.storage_conditions" #storage_conditions="ngModel" required>
           <option [ngValue]="undefined" disabled selected>Условия храниения</option>
           <option value="Store at low temperature">Хранить при низкой температуре</option>
           <option value="Store at high temperature">Хранить при высокой температуре</option>

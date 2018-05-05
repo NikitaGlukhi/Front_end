@@ -3,14 +3,14 @@
   <form name="form" (ngSubmit)="o.form.valid" #o="ngForm" novalidate method="POST">
     <div class="section"><span>1</span>Данные о товаре</div>
     <div class="form-group" [ngClass]="{'has error': o.submitted && !product_name.valid && !count.valid && !weight.valid && !storage_conditions.valid && !shipping_city.valid && shipping_address.valid && delivery_city.valid && delivery_address.valid}">
-      <label>Название товара<input type="text" class="form-control" name="product_name" [(ngModel)]="model1.product_name" #product_name="ngModel" autocomplete="off" required /></label>
+      <label>Название товара<input type="text" class="form-control" name="product_name" [(ngModel)]="model11.product_name" #product_name="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="o.submitted && !product_name.valid">Order name is required</div>
-      <label>Количество<input type="number" class="form-control" name="count" [(ngModel)]="model1.count" #count="ngModel" autocomplete="off" required /></label>
+      <label>Количество<input type="number" class="form-control" name="count" [(ngModel)]="model11.count" #count="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="o.submitted && !count.valid">Order count is required</div>
-      <label>Масса товара(общаяя)<input type="number" class="form-control" name="weight" [(ngModel)]="model1.weight" #weight="ngModel" autocomplete="off" required /></label>
+      <label>Масса товара(общаяя)<input type="number" class="form-control" name="weight" [(ngModel)]="model11.weight" #weight="ngModel" autocomplete="off" required /></label>
       <div class="required" *ngIf="o.submitted && !weight.valid">Order weight is required</div>
       <label>Условия хранения
-        <select type="text" class="form-control" name="storage_conditions" [(ngModel)]="model1.storage_conditions" #storage_conditions="ngModel" required>
+        <select type="text" class="form-control" name="storage_conditions" [(ngModel)]="model11.storage_conditions" #storage_conditions="ngModel" required>
           <option [ngValue]="undefined" disabled selected>Условия храниения</option>
           <option value="Store at low temperature">Хранить при низкой температуре</option>
           <option value="Store at high temperature">Хранить при высокой температуре</option>

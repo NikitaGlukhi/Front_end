@@ -15,6 +15,7 @@ import { AppClientModel } from '../models/client';
   constructor(public auth: AppAuthService, public nav: NavbarService) {}
 
   ngOnInit() {
+    this.nav.show();
     this.auth.subject.subscribe((data: any) => {
       if (JSON.parse(localStorage.getItem('currentUser'))) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
