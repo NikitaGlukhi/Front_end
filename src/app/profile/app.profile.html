@@ -1,22 +1,39 @@
-<div class="card">
-  <h1>{{currentUser.client_first_name}} {{currentUser.client_last_name}}</h1>
+
+<form>
+  <h1><i class="fa fa-user"></i> {{currentUser.client_first_name}} {{currentUser.client_last_name}}</h1>
   <p>Никнейм: {{currentUser.client_username}}</p>
-  <p>Номер телефона(+380): {{currentUser.client_phone_number}}</p>
+  <p> Номер телефона(+380): {{currentUser.client_phone_number}}</p>
   <p>Статус: {{currentUser.client_status}}</p>
   <p>Пол: {{currentUser.client_gender}}</p>
   <p>Возраст: {{currentUser.client_age}}</p>
-</div>
-<div>
-  Мои заказы
-<form *ngFor="let myorder of Orders">
-  <li><a>Название товара: {{myorder.product_name}}</a></li>
-  <li><a>Количество: {{myorder.count}}</a></li>
-  <li><a>Масса товара(общая): {{myorder.weight}}</a></li>
-  <li><a>Условия хранения: {{myorder.storage_conditions}}</a></li>
-  <li><a>Город отправлнеия: {{myorder.shipping_city}}</a></li>
-  <li><a>Адрес отправления: {{myorder.shipping_address}}</a>
-  <li><a>Город доставки: {{myorder.delivery_city}}</a></li>
-  <li><a>Адрес доставки: {{myorder.delivery_address}}</a></li>
-  <li><a>Одобрено: {{myorder.updatedAt}}</a></li>
+  <button *ngIf="condition" (click)="change()">Заказы, отправленные мной</button>
+  <button *ngIf="!condition" (click)="change()">Заказы, отправленные мне</button>
 </form>
+<div *ngIf="condition">
+<h2>Заказы, отправленные мне</h2>
+  <form *ngFor="let myorder of Orders">
+    <p>Название товара: {{myorder.product_name}}</p>
+    <p>Количество: {{myorder.count}}</p>
+    <p>Масса товара(общая): {{myorder.weight}}</p>
+    <p>Условия хранения: {{myorder.storage_conditions}}</p>
+    <p>Город отправлнеия: {{myorder.shipping_city}}</p>
+    <p>Адрес отправления: {{myorder.shipping_address}}</p>
+    <p>Город доставки: {{myorder.delivery_city}}</p>
+    <p>Адрес доставки: {{myorder.delivery_address}}</p>
+    <p>Отправитель: {{myorder.client_first_name}} {{myorder.client_last_name}}</p>
+  </form>
+</div>
+<div *ngIf="!condition">
+  <h2>Заказы, отправленные мной</h2>
+  <form *ngFor="let myorder1 of Orders1">
+    <p>Название товара: {{myorder1.product_name}}</p>
+    <p>Количество: {{myorder1.count}}</p>
+    <p>Масса товара(общая): {{myorder1.weight}}</p>
+    <p>Условия хранения: {{myorder1.storage_conditions}}</p>
+    <p>Город отправлнеия: {{myorder1.shipping_city}}</p>
+    <p>Адрес отправления: {{myorder1.shipping_address}}</p>
+    <p>Город доставки: {{myorder1.delivery_city}}</p>
+    <p>Адрес доставки: {{myorder1.delivery_address}}</p>
+    <p>Получатель: {{myorder1.client_first_name}} {{myorder1.client_last_name}}</p>
+  </form>
 </div>

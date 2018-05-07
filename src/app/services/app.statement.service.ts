@@ -76,4 +76,12 @@ export class AppStatementService {
          catchError(this.handleError)
        );
   }
+
+  myOrders1(userId: number) {
+    console.log(userId);
+    return this.http.get('api/myorder1/' + userId)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 }

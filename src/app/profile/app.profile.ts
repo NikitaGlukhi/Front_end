@@ -14,6 +14,12 @@ export class AppProfileComponent implements OnInit {
   currentUser: AppClientModel;
   users: AppClientModel[] = [];
   Orders: any = [];
+  Orders1: any = [];
+  condition = true;
+
+  change() {
+    this.condition = !this.condition
+  }
 
   constructor(private userService: AppUserService, private myOrder: AppStatementService, public nav: NavbarService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -25,6 +31,9 @@ export class AppProfileComponent implements OnInit {
     this.loadAllUsers();
     this.myOrder.myOrders(this.currentUser.client_id).subscribe(data => {
       this.Orders = data
+    });
+    this.myOrder.myOrders1(this.currentUser.client_id).subscribe(data => {
+      this.Orders1 = data;
     })
   }
 

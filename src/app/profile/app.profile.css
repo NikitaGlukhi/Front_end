@@ -1,9 +1,16 @@
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+
+form {
   max-width: 300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
+  margin: 10px auto;
+  padding: 50px 80px;
+  background: #f4f7f8;
+  border-radius: 8px;
+}
+
+h2 {
+  padding: 0 700px;
 }
 
 .title {

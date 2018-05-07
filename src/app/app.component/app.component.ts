@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppAuthService } from '../services/app.auth.service';
-import { NavbarService } from '../services/navbar.service';
 import { AppClientModel } from '../models/client';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-root',
